@@ -10,7 +10,7 @@ import java.util.Scanner;
 /**
  * Kelas sebagai papan permainan yang dapat menjalankan game dalam text mode
  * maupun GUI.
- *
+ * Check
  * @author Devi Handevi 2013730015
  */
 public class Board {
