@@ -5,7 +5,6 @@
 package chipgame.level;
 
 import chipgame.tiles.*;
-import java.util.Scanner;
 
 /**
  * Kelas sebagai papan permainan yang dapat menjalankan game dalam text mode
@@ -15,13 +14,34 @@ import java.util.Scanner;
  */
 public class Board {
 
+    /**
+     * Attribute untuk menyimpan tiles.
+     */
     private Tile[][] tiles;
+    /**
+     * Attribute untuk menyimpan tinggi papan permainan.
+     */
     private int width;
+    /**
+     * Attribute untuk menyimpan lebar papan permainan.
+     */
     private int length;
+    /**
+     * Attribute untuk menyimpan chip, sebagai pemain.
+     */
     private Chip chip;
+    /**
+     * Attribute untuk menyimpan jumlah IC yang diperlukan.
+     */
     private int ICRequired;
+    /**
+     * Attribute untuk menyimpan jumlah kunci yang diperlukan.
+     */
     private int keyRequired;
 
+    /**
+     * Constructor default untuk men-set papan permainan.
+     */
     public Board() {
         this.width = 10;
         this.length = 10;
@@ -81,7 +101,8 @@ public class Board {
         this.tiles[8][8].addObject(new Finish());
     }
 
-    public void drawBoard() {
+    public String getCurrentBoardCondition() {
+        String currentBoard = new String();
         TileObject steppedObject;
 
         for (int i = 0; i < width; i++) {
@@ -89,71 +110,67 @@ public class Board {
                 if (i != chip.getY() || j != chip.getX()) {
                     steppedObject = this.tiles[i][j].getWhatIsStepped();
                     if (steppedObject == null) {
-                        System.out.print(".");
+                        currentBoard += ".";
                     } else {
                         if (steppedObject.getClass().equals(Chip.class)) {
-                            System.out.print("?");
+                            currentBoard += "?";
                         } else if (steppedObject.getClass().equals(Wall.class)) {
-                            System.out.print("W");
+                            currentBoard += "W";
                         } else if (steppedObject.getClass().equals(Barrier.class)) {
-                            System.out.print("B");
+                            currentBoard += "B";
                         } else if (steppedObject.getClass().equals(Finish.class)) {
-                            System.out.print("F");
+                            currentBoard += "F";
                         } else if (steppedObject.getClass().equals(Fire.class)) {
-                            System.out.print("X");
+                            currentBoard += "X";
                         } else if (steppedObject.getClass().equals(IntegratedCircuit.class)) {
-                            System.out.print("I");
+                            currentBoard += "I";
                         } else if (steppedObject.getClass().equals(Key.class)) {
-                            System.out.print("K");
+                            currentBoard += "K";
                         } else if (steppedObject.getClass().equals(Door.class)) {
-                            System.out.print("D");
+                            currentBoard += "D";
                         }
                         
                     }
                 } else {
-                    System.out.print("O");
+                    currentBoard += "O";
                 }
-                System.out.print(" ");
+                currentBoard += " ";
             }
-            System.out.println("");
+            currentBoard += "\n";
         }
+        return currentBoard;
     }
 
-    public void startGameTextMode() {
-        Scanner sc = new Scanner(System.in);
-        String dir;
+    public void move(String dir) {
         Tile steppedTile;
         TileObject steppedObject;
         boolean canMove;
-        this.drawBoard();
-
-        while (this.chip.getCondition() == 0) {
-            dir = sc.next();
-            if (dir.equals("a")) {
-                steppedTile = this.tiles[this.chip.getY()][this.chip.getX() - 1];
-                canMove = this.chip.move(steppedTile.getWhatIsStepped(), -1, 0);
-            } else if (dir.equals("d")) {
-                steppedTile = this.tiles[this.chip.getY()][this.chip.getX() + 1];
-                canMove = this.chip.move(steppedTile.getWhatIsStepped(), 1, 0);
-            } else if (dir.equals("w")) {
-                steppedTile = this.tiles[this.chip.getY() - 1][this.chip.getX()];
-                canMove = this.chip.move(steppedTile.getWhatIsStepped(), 0, -1);
-            } else //s
-            {
-                steppedTile = this.tiles[this.chip.getY() + 1][this.chip.getX()];
-                canMove = this.chip.move(steppedTile.getWhatIsStepped(), 0, 1);
-            }
-
-            if (canMove) {
-                this.chip.addObject(steppedTile.takeSteppedObject());
-            }
-            this.drawBoard();
+        
+        if (dir.equals("a")) {
+            steppedTile = this.tiles[this.chip.getY()][this.chip.getX() - 1];
+            canMove = this.chip.move(steppedTile.getWhatIsStepped(), -1, 0);
+        } else if (dir.equals("d")) {
+            steppedTile = this.tiles[this.chip.getY()][this.chip.getX() + 1];
+            canMove = this.chip.move(steppedTile.getWhatIsStepped(), 1, 0);
+        } else if (dir.equals("w")) {
+            steppedTile = this.tiles[this.chip.getY() - 1][this.chip.getX()];
+            canMove = this.chip.move(steppedTile.getWhatIsStepped(), 0, -1);
+        } else //s
+        {
+            steppedTile = this.tiles[this.chip.getY() + 1][this.chip.getX()];
+            canMove = this.chip.move(steppedTile.getWhatIsStepped(), 0, 1);
         }
 
-        if (this.chip.getCondition() == 1) {
-            System.out.println("WIN");
-        } else {
-            System.out.println("LOSE");
+        if (canMove) {
+            this.chip.addObject(steppedTile.takeSteppedObject());
         }
+    }
+    
+    /**
+     * Method untuk mengecek kondisi permainan.
+     * @return 0 jika permainan belum berakhir, -1 jika permainan kalah, 1 jika permainan dimenangkan
+     */
+    public int getCondition() {
+        return this.chip.getCondition();
     }
 }

@@ -12,10 +12,19 @@ package chipgame.tiles;
 public abstract class TileObject {
 
     /**
-     *
-     * @return -1 ga bisa, 0 bisa, 1 mati, 2 menang, 3 cek dulu
+     * Method untuk mengecek apakah objek ini dapat diinjak atau tidak.
+     * @return
+     * -1 objek tidak dapat diinjak, 
+     * 0 objek dapat langsung diinjak, 
+     * 1 dapat diinjak, tetapi jika terinjak, pengingjak akan mati dan permainan berakhir, 
+     * 2 dapat diinjak, jika terinjak, penginjak menang dan permainan berakhir, 
+     * 3 dapat diinjak, tetapi harus ada pengecekan terlebih dahulu apakah persyaratan penginjak memenuhi atau tidak.
      */
     public abstract int canBeStepped();
 
+    /**
+     * Method untuk mengecek apakah objek ini dapat diambil atau tidak.
+     * @return true jika objek dapat diambil, false jika sebaliknya
+     */
     public abstract boolean canBeTaken();
 }

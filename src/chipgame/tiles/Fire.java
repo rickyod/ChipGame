@@ -11,11 +11,19 @@ package chipgame.tiles;
  */
 public class Fire extends TileObject {
 
+    /**
+     * Method untuk mengecek apakah objek ini dapat diinjak atau tidak.
+     * @return 1, berarti bisa diinjak namun penginjak mati dan permainan berakhir
+     */
     @Override
     public int canBeStepped() {
         return 1;
     }
 
+    /**
+     * Method untuk mengecek apakah objek ini dapat diambil atau tidak.
+     * @return false, berarti tidak bisa
+     */
     @Override
     public boolean canBeTaken() {
         return false;
