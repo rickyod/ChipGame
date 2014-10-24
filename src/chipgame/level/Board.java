@@ -5,11 +5,12 @@
 package chipgame.level;
 
 import chipgame.tiles.*;
+import java.awt.Color;
 
 /**
  * Kelas sebagai papan permainan yang dapat menjalankan game dalam text mode
  * maupun GUI.
- * 
+ *
  * @author Devi Handevi 2013730015
  */
 public class Board {
@@ -34,10 +35,6 @@ public class Board {
      * Attribute untuk menyimpan jumlah IC yang diperlukan.
      */
     private int ICRequired;
-    /**
-     * Attribute untuk menyimpan jumlah kunci yang diperlukan.
-     */
-    private int keyRequired;
 
     /**
      * Constructor default untuk men-set papan permainan.
@@ -47,7 +44,6 @@ public class Board {
         this.length = 10;
         this.tiles = new Tile[width][length];
         this.ICRequired = 3;
-        keyRequired = 1;
 
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < length; j++) {
@@ -55,7 +51,7 @@ public class Board {
             }
         }
 
-        this.chip = new Chip(1, 1, ICRequired, keyRequired);
+        this.chip = new Chip(1, 1, ICRequired);
 
         for (int i = 0; i < width; i++) { //wall kiri
             this.tiles[i][0].addObject(new Wall());
@@ -74,8 +70,8 @@ public class Board {
         this.tiles[2][8].addObject(new IntegratedCircuit());
         this.tiles[8][2].addObject(new IntegratedCircuit());
 
-        this.tiles[8][5].addObject(new Key());
-        this.tiles[8][6].addObject(new Door());
+        this.tiles[8][5].addObject(new Key(Color.GREEN));
+        this.tiles[8][6].addObject(new Door(Color.GREEN));
 
         this.tiles[1][3].addObject(new Fire());
         this.tiles[2][3].addObject(new Fire());
@@ -129,7 +125,7 @@ public class Board {
                         } else if (steppedObject.getClass().equals(Door.class)) {
                             currentBoard += "D";
                         }
-                        
+
                     }
                 } else {
                     currentBoard += "O";
@@ -145,7 +141,7 @@ public class Board {
         Tile steppedTile;
         TileObject steppedObject;
         boolean canMove;
-        
+
         if (dir.equals("a")) {
             steppedTile = this.tiles[this.chip.getY()][this.chip.getX() - 1];
             canMove = this.chip.move(steppedTile.getWhatIsStepped(), -1, 0);
@@ -162,13 +158,15 @@ public class Board {
         }
 
         if (canMove) {
-            this.chip.addObject(steppedTile.takeSteppedObject());
+            this.chip.takeObject(steppedTile.takeSteppedObject());
         }
     }
-    
+
     /**
      * Method untuk mengecek kondisi permainan.
-     * @return 0 jika permainan belum berakhir, -1 jika permainan kalah, 1 jika permainan dimenangkan
+     *
+     * @return 0 jika permainan belum berakhir, -1 jika permainan kalah, 1 jika
+     * permainan dimenangkan
      */
     public int getCondition() {
         return this.chip.getCondition();

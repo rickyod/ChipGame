@@ -4,6 +4,8 @@
  */
 package chipgame.tiles;
 
+import java.awt.Color;
+
 /**
  *
  * @author Devi
@@ -11,11 +13,23 @@ package chipgame.tiles;
 public class Key extends TileObject {
 
     /**
+     * Atribut warna dari key
+     * (Red , Green , Blue)
+     */
+    private Color color;
+    
+    public Key(Color color)
+    {
+        this.color = color;
+    }
+    
+    /**
      * Method untuk mengecek apakah objek ini dapat diinjak atau tidak.
      * @return 0, berarti bisa langsung diinjak
      */
     @Override
-    public int canBeStepped() {
+    public int canBeStepped() 
+    {
         return 0;
     }
 
@@ -24,7 +38,17 @@ public class Key extends TileObject {
      * @return true, berarti bisa
      */
     @Override
-    public boolean canBeTaken() {
+    public boolean canBeTaken() 
+    {
         return true;
+    }
+    
+    /**
+     * Method untuk mendapatkan warna dari kunci.
+     * @return warna kunci
+     */
+    public Color getColor()
+    {
+        return this.color;
     }
 }

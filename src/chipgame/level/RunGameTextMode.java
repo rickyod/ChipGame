@@ -20,7 +20,7 @@ public class RunGameTextMode {
         while(true) {
             System.out.print(board.getCurrentBoardCondition());
             move = sc.next();
-            board.move(move);
+            board.move(move.charAt(0)+"");
             
             condition = board.getCondition();
             if(condition!=0) {

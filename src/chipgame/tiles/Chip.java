@@ -5,6 +5,8 @@
 package chipgame.tiles;
 
 //import java.util.LinkedList;
+import java.awt.Color;
+
 /**
  * Kelas Chip sebagai player.
  *
@@ -21,8 +23,9 @@ public class Chip {
      */
     private int y;
     /**
-     * Attribute untuk menyimpan nilai, apakah chip masih bisa terus main, sudah menang, atau sudah mati.
-     * -1 berarti chip kalah, 1 berarti chip menang, 0 berarti bukan kedua-duanya.
+     * Attribute untuk menyimpan nilai, apakah chip masih bisa terus main, sudah
+     * menang, atau sudah mati. -1 berarti chip kalah, 1 berarti chip menang, 0
+     * berarti bukan kedua-duanya.
      */
     private int win; //-1 lose, 0 not yet, 1 win
     /**
@@ -34,44 +37,40 @@ public class Chip {
      */
     private final int ICRequired;
     /**
-     * Attribute untuk menyimpan jumlah key yang dimiliki.
+     * Attribute array dari kumpulan key berwarna. [0]Red,[1]Green,[2]Blue
      */
-    private int keyAcquired;
-    /**
-     * Attribute untuk menyimpan jumlah key yang diperlukan.
-     */
-    private final int keyRequired;
-    
+    private int[] coloredKey;
+
     //!!! disini perlu perubahan
     //ganti persyaratan key dan door juga
     //jika key merah, door merah terbuka
-    //tidak perlu ada jumlah key yang dibutuhkan untuk suatu door
+    //tidlah key yang dak perlu ada jumibutuhkan untuk suatu door
     //key menggunakan array 1D, dengan panjang 3 (?) untuk warna (mis. R G B)
     //tambah setiap mendapatkan key
     //kurang setiap membuka door
     //jangan lupa hilangkan yang if if untuk key yang lama
     //perlu getter jumlah kunci sesuai warna
     //cek juga di board karena ada keyRequired
-
     /**
      * Constructor untuk membuat objek dari chip.
+     *
      * @param x posisi absis awal chip
      * @param y posisi ordinat awal chip
      * @param ICRequired jumlah IC yang dibutuhkan
      * @param keyRequired jumlah key yang dibutuhkan
      */
-    public Chip(int x, int y, int ICRequired, int keyRequired) {
+    public Chip(int x, int y, int ICRequired) {
         this.x = x;
         this.y = y;
         this.ICAcquired = 0;
         this.ICRequired = ICRequired;
-        this.keyAcquired = 0;
-        this.keyRequired = keyRequired;
         this.win = 0;
+        this.coloredKey = new int[3];
     }
 
     /**
      * Method untuk mengecek apakah chip dapat pindah atau tidak.
+     *
      * @param object objek yang ingin diinjak
      * @param moveX perubahan x
      * @param moveY perubahan y
@@ -93,10 +92,21 @@ public class Chip {
                     this.move(moveX, moveY);
                     this.win = 1;
                 } else if (object.canBeStepped() == 3) { //bisa bergerak, dengan syarat tertentu
-                    if(object.getClass().equals(Barrier.class)) //jika barrier
-                    { if(((Barrier)object).check(this)) { this.move(moveX, moveY); } else { return false; } }
-                    else //jika door
-                    { if(((Door)object).check(this)) { this.move(moveX, moveY); } else { return false; } }
+                    if (object.getClass().equals(Barrier.class)) //jika barrier
+                    {
+                        if (((Barrier) object).check(this)) {
+                            this.move(moveX, moveY);
+                        } else {
+                            return false;
+                        }
+                    } else //jika door
+                    {
+                        if (((Door) object).openDoor(this)) {
+                            this.move(moveX, moveY);
+                        } else {
+                            return false;
+                        }
+                    }
                 }
             }
             return true;
@@ -105,6 +115,7 @@ public class Chip {
 
     /**
      * Method untuk menjalankan chip.
+     *
      * @param moveX perubahan x
      * @param moveY perubahan y
      */
@@ -114,19 +125,32 @@ public class Chip {
     }
 
     /**
-     * Method untuk mendapatkan objek yang diambil.
-     * Jika objek tersebut tidak penting untuk pengguna, maka objek tersebut tidak akan dianggap, contohnya pintu.
-     * @param object objek yang diambil di ubin
+     * Method untuk mendapatkan objek yang di tile. Jika objek tersebut tidak
+     * penting untuk pengguna, maka objek tersebut tidak akan dianggap,
+     * contohnya pintu.
+     *
+     * @param object objek yang diambil di tile
      */
-    public void addObject(TileObject object) {
+    public void takeObject(TileObject object) {
         if (object != null) {
-            if(object.getClass().equals(IntegratedCircuit.class)) { this.ICAcquired++; }
-            else if(object.getClass().equals(Key.class)) { this.keyAcquired++; }
+            if (object.getClass().equals(IntegratedCircuit.class)) {
+                this.ICAcquired++;
+            } else if (object.getClass().equals(Key.class)) {
+                Key keyObj = (Key) object;
+                if (keyObj.getColor().equals(Color.RED)) {
+                    this.coloredKey[0]++;
+                } else if (keyObj.getColor().equals(Color.GREEN)) {
+                    this.coloredKey[1]++;
+                } else if (keyObj.getColor().equals(Color.BLUE)) {
+                    this.coloredKey[2]++;
+                }
+            }
         }
     }
 
     /**
      * Method untuk mendapatkan IC yang dimiliki chip.
+     *
      * @return jumlah IC yang dimiliki
      */
     public int getICAcquired() {
@@ -135,6 +159,7 @@ public class Chip {
 
     /**
      * Method untuk mendapatkan IC yang diperlukan.
+     *
      * @return jumlah IC yang diperlukan
      */
     public int getICRequired() {
@@ -143,22 +168,48 @@ public class Chip {
 
     /**
      * Method untuk mendapatkan key yang dimiliki chip.
+     *
      * @return jumlah key yang dimiliki
      */
-    public int getKeyAcquired() {
-        return keyAcquired;
+    public int getColoredKeyAcquired(Color color) {
+        if(color.equals(Color.RED))
+        {
+            return this.coloredKey[0];
+        }
+        else if(color.equals(Color.GREEN))
+        {
+            return this.coloredKey[1];
+        }
+        else if(color.equals(Color.BLUE))
+        {
+            return this.coloredKey[2];
+        }
+        return 0;
     }
 
     /**
      * Method untuk mendapatkan key yang diperlukan.
+     *
      * @return jumlah key yang diperlukan
      */
-    public int getKeyRequired() {
-        return keyRequired;
+    public void useKey(Color color) {
+        if(color.equals(Color.RED))
+        {
+            this.coloredKey[0]--;
+        }
+        else if(color.equals(Color.GREEN))
+        {
+            this.coloredKey[1]--;
+        }
+        else if(color.equals(Color.BLUE))
+        {
+            this.coloredKey[2]--;
+        }
     }
 
     /**
      * Method untuk mendapatkan posisi x chip.
+     *
      * @return posisi x chip
      */
     public int getX() {
@@ -167,6 +218,7 @@ public class Chip {
 
     /**
      * Method untuk mendapatkan posisi y chip.
+     *
      * @return posisi y chip
      */
     public int getY() {
@@ -174,7 +226,9 @@ public class Chip {
     }
 
     /**
-     * Method untuk mengecek kondisi chip masih bisa lanjut permainan atau tidak.
+     * Method untuk mengecek kondisi chip masih bisa lanjut permainan atau
+     * tidak.
+     *
      * @return -1 jika sudah kalah, 1 jika sudah menang, 0 jika belum keduanya
      */
     public int getCondition() {
