@@ -97,6 +97,16 @@ public class Board {
         this.tiles[8][8].addObject(new Finish());
     }
 
+    public Tile[][] getArrayOfTile()
+    {
+        return this.tiles;
+    }
+    
+    public int lengthBoard()
+    {
+        return this.length;
+    }
+    
     public String getCurrentBoardCondition() {
         String currentBoard = new String();
         TileObject steppedObject;
@@ -170,5 +180,14 @@ public class Board {
      */
     public int getCondition() {
         return this.chip.getCondition();
+    }
+    
+    /**
+     * Method untuk mendapatkan objek chip
+     * @return 
+     */
+    public Chip getChip()
+    {
+        return this.chip;
     }
 }
