@@ -19,7 +19,8 @@ public class Finish extends TileObject {
 
     public Finish() {
         try {
-            this.image = ImageIO.read(new URL("chipgame/images/finish.jpg"));
+            URL url = getClass().getClassLoader().getResource("chipgame/images/finish.jpg");
+            this.image = ImageIO.read(url);
         } catch (IOException ex) {
             Logger.getLogger(Finish.class.getName()).log(Level.SEVERE, null, ex);
         }

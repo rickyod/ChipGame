@@ -20,7 +20,8 @@ public class Fire extends TileObject {
 
     public Fire() {
         try {
-            this.image = ImageIO.read(new URL("chipgame/images/fire.jpg"));
+            URL url = getClass().getClassLoader().getResource("chipgame/images/fire.jpg");
+            this.image = ImageIO.read(url);
         } catch (IOException ex) {
             Logger.getLogger(Fire.class.getName()).log(Level.SEVERE, null, ex);
         }

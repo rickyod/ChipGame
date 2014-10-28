@@ -20,7 +20,8 @@ public class IntegratedCircuit extends TileObject {
 
     public IntegratedCircuit() {
         try {
-            this.image = ImageIO.read(new URL("chipgame/images/IC.jpg"));
+            URL url = getClass().getClassLoader().getResource("chipgame/images/IC.jpg");
+            this.image = ImageIO.read(url);
         } catch (IOException ex) {
             Logger.getLogger(IntegratedCircuit.class.getName()).log(Level.SEVERE, null, ex);
         }

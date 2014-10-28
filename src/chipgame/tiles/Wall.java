@@ -20,7 +20,8 @@ public class Wall extends TileObject {
 
     public Wall() {
         try {
-            this.image = ImageIO.read(new URL("chipgame/images/wall.jpg"));
+            URL url = getClass().getClassLoader().getResource("chipgame/images/wall.jpg");
+            this.image = ImageIO.read(url);
         } catch (IOException ex) {
             Logger.getLogger(Wall.class.getName()).log(Level.SEVERE, null, ex);
         }

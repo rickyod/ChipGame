@@ -18,14 +18,6 @@ import javax.imageio.ImageIO;
  */
 public class Key extends TileObject {
 
-    public Key() {
-        try {
-            this.image = ImageIO.read(new URL("chipgame/images/key.jpg"));
-        } catch (IOException ex) {
-            Logger.getLogger(Key.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
     /**
      * Atribut warna dari key
      * (Red , Green , Blue)
@@ -35,6 +27,24 @@ public class Key extends TileObject {
     public Key(Color color)
     {
         this.color = color;
+        try {
+            URL url=null;
+            if(this.color.equals(Color.RED))
+            {
+                url = getClass().getClassLoader().getResource("chipgame/images/keyred.jpg");
+            }
+            else if(this.color.equals(Color.GREEN))
+            {
+                url = getClass().getClassLoader().getResource("chipgame/images/keygreen.jpg");
+            }
+            else if(this.color.equals(Color.BLUE))
+            {
+                url = getClass().getClassLoader().getResource("chipgame/images/keyblue.jpg");
+            }
+           this.image = ImageIO.read(url);
+        } catch (IOException ex) {
+            Logger.getLogger(Key.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**

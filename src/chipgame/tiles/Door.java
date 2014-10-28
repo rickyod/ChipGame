@@ -18,14 +18,6 @@ import javax.imageio.ImageIO;
  */
 public class Door extends TileObject {
 
-    public Door() {
-        try {
-            this.image = ImageIO.read(new URL("chipgame/images/door.jpg"));
-        } catch (IOException ex) {
-            Logger.getLogger(Door.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
     /**
      * Atribut warna dari door
      */
@@ -34,6 +26,12 @@ public class Door extends TileObject {
     public Door(Color color)
     {
         this.color=color;
+        try {
+            URL url = getClass().getClassLoader().getResource("chipgame/images/door.jpg");
+            this.image = ImageIO.read(url);
+        } catch (IOException ex) {
+            Logger.getLogger(Door.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /**
