@@ -73,8 +73,8 @@ public class RunGameGUIMode extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         Image img = null;
         //Draw
-        for (int i = 0; i < this.board.lengthBoard(); i++) {
-            for (int j = 0; j < this.board.lengthBoard(); j++) {
+        for (int i = 0; i < this.board.getLength(); i++) {
+            for (int j = 0; j < this.board.getWidth(); j++) {
                 img = this.board.getArrayOfTile()[i][j].getImage();
                 g2d.drawImage(img,j*48,i*48,this);
             }

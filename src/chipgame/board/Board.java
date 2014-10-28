@@ -102,9 +102,14 @@ public class Board {
         return this.tiles;
     }
     
-    public int lengthBoard()
+    public int getLength()
     {
         return this.length;
+    }
+    
+    public int getWidth()
+    {
+        return this.width;
     }
     
     public String getCurrentBoardCondition() {
