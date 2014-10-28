@@ -6,7 +6,6 @@ package chipgame.tiles;
 
 import java.awt.Image;
 import java.io.IOException;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -20,8 +19,7 @@ public class IntegratedCircuit extends TileObject {
 
     public IntegratedCircuit() {
         try {
-            URL url = getClass().getClassLoader().getResource("chipgame/images/IC.jpg");
-            this.image = ImageIO.read(url);
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/IC.jpg"));
         } catch (IOException ex) {
             Logger.getLogger(IntegratedCircuit.class.getName()).log(Level.SEVERE, null, ex);
         }

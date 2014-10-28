@@ -97,22 +97,38 @@ public class Board {
         this.tiles[8][8].addObject(new Finish());
     }
 
+    /**
+     * Method untuk mendapatkan tile-tile di dalam board.
+     * @return array of tile di dalam board
+     */
     public Tile[][] getArrayOfTile()
     {
         return this.tiles;
     }
     
+    /**
+     * Method untuk mendapatkan panjang board.
+     * @return 
+     */
     public int getLength()
     {
         return this.length;
     }
     
+    /**
+     * Method untuk mendapatkan lebar board.
+     * @return 
+     */
     public int getWidth()
     {
         return this.width;
     }
     
-    public String getCurrentBoardCondition() {
+    /**
+     * Method untuk mendapatkan kondisi papan dalam text mode. Sebagai debugger.
+     * @return kondisi papan dalam text mode
+     */
+    public String getCurrentBoardConditionTextMode() {
         String currentBoard = new String();
         TileObject steppedObject;
 
@@ -140,7 +156,6 @@ public class Board {
                         } else if (steppedObject.getClass().equals(Door.class)) {
                             currentBoard += "D";
                         }
-
                     }
                 } else {
                     currentBoard += "O";
@@ -152,6 +167,10 @@ public class Board {
         return currentBoard;
     }
 
+    /**
+     * Method untuk menggerakan chip ke arah tertentu.
+     * @param dir arah bergerak
+     */
     public void move(String dir) {
         Tile steppedTile;
         TileObject steppedObject;
@@ -166,8 +185,7 @@ public class Board {
         } else if (dir.equals("w")) {
             steppedTile = this.tiles[this.chip.getY() - 1][this.chip.getX()];
             canMove = this.chip.move(steppedTile.getWhatIsStepped(), 0, -1);
-        } else //s
-        {
+        } else { //s
             steppedTile = this.tiles[this.chip.getY() + 1][this.chip.getX()];
             canMove = this.chip.move(steppedTile.getWhatIsStepped(), 0, 1);
         }

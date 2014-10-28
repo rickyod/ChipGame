@@ -6,7 +6,6 @@ package chipgame.tiles;
 
 import java.awt.Image;
 import java.io.IOException;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -20,8 +19,7 @@ public class Fire extends TileObject {
 
     public Fire() {
         try {
-            URL url = getClass().getClassLoader().getResource("chipgame/images/fire.jpg");
-            this.image = ImageIO.read(url);
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire.jpg"));
         } catch (IOException ex) {
             Logger.getLogger(Fire.class.getName()).log(Level.SEVERE, null, ex);
         }

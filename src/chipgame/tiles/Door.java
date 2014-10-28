@@ -7,7 +7,6 @@ package chipgame.tiles;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -27,8 +26,7 @@ public class Door extends TileObject {
     {
         this.color=color;
         try {
-            URL url = getClass().getClassLoader().getResource("chipgame/images/door.jpg");
-            this.image = ImageIO.read(url);
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door.jpg"));
         } catch (IOException ex) {
             Logger.getLogger(Door.class.getName()).log(Level.SEVERE, null, ex);
         }

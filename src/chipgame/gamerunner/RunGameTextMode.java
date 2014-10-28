@@ -23,13 +23,13 @@ public class RunGameTextMode {
         int condition;
         
         while(true) {
-            System.out.print(board.getCurrentBoardCondition());
+            System.out.print(board.getCurrentBoardConditionTextMode());
             move = sc.next();
             board.move(move);
             
             condition = board.getCondition();
             if(condition!=0) {
-                System.out.print(board.getCurrentBoardCondition());
+                System.out.print(board.getCurrentBoardConditionTextMode());
                 if(condition==1) {
                     System.out.println("WIN");
                 } else {

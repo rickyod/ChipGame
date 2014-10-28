@@ -8,7 +8,6 @@ package chipgame.tiles;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -68,8 +67,7 @@ public class Chip implements Drawable {
         this.coloredKey = new int[3];
         
         try {
-            URL url = getClass().getClassLoader().getResource("chipgame/images/chip.png");
-            this.image = ImageIO.read(url);
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip.png"));
         } catch (IOException ex) {
             Logger.getLogger(Chip.class.getName()).log(Level.SEVERE, null, ex);
         }

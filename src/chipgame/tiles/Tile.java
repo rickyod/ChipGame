@@ -6,7 +6,6 @@ package chipgame.tiles;
 
 import java.awt.Image;
 import java.io.IOException;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -39,8 +38,7 @@ public class Tile implements Drawable {
      */
     public Tile() {
         try {
-            URL url = getClass().getClassLoader().getResource("chipgame/images/tile.jpg");
-            this.image = ImageIO.read(url);
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/tile.jpg"));
         } catch (IOException ex) {
             Logger.getLogger(Tile.class.getName()).log(Level.SEVERE, null, ex);
         }

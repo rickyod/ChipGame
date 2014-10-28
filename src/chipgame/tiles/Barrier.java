@@ -6,7 +6,6 @@ package chipgame.tiles;
 
 import java.awt.Image;
 import java.io.IOException;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -19,8 +18,7 @@ public class Barrier extends TileObject implements Conditional {
 
     public Barrier() {
         try {
-            URL url = getClass().getClassLoader().getResource("chipgame/images/barrier.jpg");
-            this.image = ImageIO.read(url);
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/barrier.jpg"));
         } catch (IOException ex) {
             Logger.getLogger(Barrier.class.getName()).log(Level.SEVERE, null, ex);
         }

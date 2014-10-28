@@ -22,21 +22,10 @@ public class RunGameGUIMode extends JPanel {
     private static int WINDOWSIZE_WIDTH = 485;
     private static int WINDOWSIZE_HEIGHT = 500;
    
-    /*
-    REMINDER!!!!!
-    Hilangkan semua attribute gambar dan URL *
-    method getImage hilangkan *
-    JANGAN ada if Chip, print something *
-    Chip di print setelah tiles sudah di print semua *
-    pemanggilan image dapat dilakukan dengan cara for(Drawable d: get all blablabla)
-    cari di google
-    */      
-    
     public RunGameGUIMode() {
         setFocusable(true);
         KeyListener listener = new KeyListener();
         addKeyListener(listener);
-        
     }
     
 
@@ -73,13 +62,13 @@ public class RunGameGUIMode extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         Image img = null;
         //Draw
-        for (int i = 0; i < this.board.getLength(); i++) {
-            for (int j = 0; j < this.board.getWidth(); j++) {
+        for (int i = 0; i < this.board.getWidth(); i++) {
+            for (int j = 0; j < this.board.getLength(); j++) {
                 img = this.board.getArrayOfTile()[i][j].getImage();
                 g2d.drawImage(img,j*48,i*48,this);
-            }
-        g2d.drawImage(board.getChip().getImage(), board.getChip().getX() * 48, board.getChip().getY() * 48, this);        
+            }     
         }
+        g2d.drawImage(board.getChip().getImage(), board.getChip().getX() * 48, board.getChip().getY() * 48, this);   
     }
 
     public static void main(String[] args) {

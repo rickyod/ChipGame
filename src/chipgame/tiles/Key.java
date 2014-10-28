@@ -7,7 +7,6 @@ package chipgame.tiles;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
-import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -19,65 +18,57 @@ import javax.imageio.ImageIO;
 public class Key extends TileObject {
 
     /**
-     * Atribut warna dari key
-     * (Red , Green , Blue)
+     * Atribut warna dari key (Red , Green , Blue)
      */
     private Color color;
-    
-    public Key(Color color)
-    {
+
+    public Key(Color color) {
         this.color = color;
         try {
-            URL url=null;
-            if(this.color.equals(Color.RED))
-            {
-                url = getClass().getClassLoader().getResource("chipgame/images/keyred.jpg");
+            if (this.color.equals(Color.RED)) {
+                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/keyred.jpg"));
+            } else if (this.color.equals(Color.GREEN)) {
+                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/keygreen.jpg"));
+            } else if (this.color.equals(Color.BLUE)) {
+                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/keyblue.jpg"));
             }
-            else if(this.color.equals(Color.GREEN))
-            {
-                url = getClass().getClassLoader().getResource("chipgame/images/keygreen.jpg");
-            }
-            else if(this.color.equals(Color.BLUE))
-            {
-                url = getClass().getClassLoader().getResource("chipgame/images/keyblue.jpg");
-            }
-           this.image = ImageIO.read(url);
         } catch (IOException ex) {
             Logger.getLogger(Key.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Method untuk mengecek apakah objek ini dapat diinjak atau tidak.
+     *
      * @return 0, berarti bisa langsung diinjak
      */
     @Override
-    public int canBeStepped() 
-    {
+    public int canBeStepped() {
         return 0;
     }
 
     /**
      * Method untuk mengecek apakah objek ini dapat diambil atau tidak.
+     *
      * @return true, berarti bisa
      */
     @Override
-    public boolean canBeTaken() 
-    {
+    public boolean canBeTaken() {
         return true;
     }
-    
+
     /**
      * Method untuk mendapatkan warna dari kunci.
+     *
      * @return warna kunci
      */
-    public Color getColor()
-    {
+    public Color getColor() {
         return this.color;
     }
-    
+
     /**
      * Method untuk mendapatkan gambar.
+     *
      * @return gambar key
      */
     @Override
