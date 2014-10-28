@@ -4,12 +4,27 @@
  */
 package chipgame.tiles;
 
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+
 /**
  * Ubin Finish sebagai objek yang dapat di taruh di ubin, jika player menginjak ini, maka player akan menang dan permainan berakhir.
  * @author Devi Handevi 2013730015
  */
 public class Finish extends TileObject {
 
+    public Finish() {
+        try {
+            this.image = ImageIO.read(new URL("chipgame/images/finish.jpg"));
+        } catch (IOException ex) {
+            Logger.getLogger(Finish.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * Method untuk mengecek apakah objek ini dapat diinjak atau tidak.
      * @return 2, berarti bisa diinjak, penginjak akan menang dan permainan berakhir.
@@ -28,4 +43,12 @@ public class Finish extends TileObject {
         return false;
     }
     
+    /**
+     * Method untuk mendapatkan gambar.
+     * @return gambar finish
+     */
+    @Override
+    public Image getImage() {
+        return this.image;
+    }
 }

@@ -49,6 +49,16 @@ public class RunGameGUIMode extends JPanel {
     private Image imgGreenKey;
     private Image imgBlueKey;
 
+    /*
+    REMINDER!!!!!
+    Hilangkan semua attribute gambar dan URL
+    method getImage hilangkan
+    JANGAN ada if Chip, print something
+    Chip di print setelah tiles sudah di print semua
+    pemanggilan image dapat dilakukan dengan cara for(Drawable d: get all blablabla)
+    cari di google
+    */      
+    
     public RunGameGUIMode() {
         setFocusable(true);
         KeyListener listener = new KeyListener();

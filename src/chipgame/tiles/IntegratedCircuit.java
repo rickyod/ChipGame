@@ -4,6 +4,13 @@
  */
 package chipgame.tiles;
 
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+
 /**
  * IC sebagai objek yang dapat di taruh di ubin yang dapat diambil dan dapat diinjak. Menginjak sama dengan mengambil.
  * @author Devi Handevi 2013730015
@@ -11,6 +18,14 @@ package chipgame.tiles;
  */
 public class IntegratedCircuit extends TileObject {
 
+    public IntegratedCircuit() {
+        try {
+            this.image = ImageIO.read(new URL("chipgame/images/IC.jpg"));
+        } catch (IOException ex) {
+            Logger.getLogger(IntegratedCircuit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * Method untuk mengecek apakah objek ini dapat diinjak atau tidak.
      * @return 0, berarti bisa langsung diinjak
@@ -29,4 +44,12 @@ public class IntegratedCircuit extends TileObject {
         return true;
     }
     
+    /**
+     * Method untuk mendapatkan gambar.
+     * @return gambar IC
+     */
+    @Override
+    public Image getImage() {
+        return this.image;
+    }
 }

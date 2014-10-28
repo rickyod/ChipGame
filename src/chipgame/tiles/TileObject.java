@@ -4,13 +4,20 @@
  */
 package chipgame.tiles;
 
+import java.awt.Image;
+
 /**
  * Kelas abstract untuk merepresentasikan objek yang dapat ditaruh di ubin.
  * @author Devi Handevi 2013730015
  * @author Riky Setiawan
  */
-public abstract class TileObject {
+public abstract class TileObject implements Drawable{
 
+    /**
+     * Attribute untuk menyimpan gambar.
+     */
+    protected Image image;
+    
     /**
      * Method untuk mengecek apakah objek ini dapat diinjak atau tidak.
      * @return

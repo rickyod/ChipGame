@@ -4,12 +4,27 @@
  */
 package chipgame.tiles;
 
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+
 /**
  * Gerbang sebagai objek yang dapat di taruh di ubin yang dapat diambil dan dapat diinjak jika player memiliki IC yang cukup.
  * @author Devi Handevi 2013730015
  */
 public class Barrier extends TileObject implements Conditional {
 
+    public Barrier() {
+        try {
+            this.image = ImageIO.read(new URL("chipgame/images/barrier.jpg"));
+        } catch (IOException ex) {
+            Logger.getLogger(Barrier.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * Method untuk mengecek apakah objek ini dapat diinjak atau tidak.
      * @return 3, berarti bisa, namun perlu ada pengecekan
@@ -37,6 +52,15 @@ public class Barrier extends TileObject implements Conditional {
     public boolean check(Chip chip) {
         if(chip.getICAcquired()>=chip.getICRequired()) { return true; }
         else { return false; }
+    }
+    
+    /**
+     * Method untuk mendapatkan gambar.
+     * @return gambar barrier
+     */
+    @Override
+    public Image getImage() {
+        return this.image;
     }
     
 }

@@ -4,12 +4,19 @@
  */
 package chipgame.tiles;
 
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+
 /**
  * Kelas sebagai kotak-kotak ubin untuk board, dapat berisi objek yang dapat diambil atau tidak, diinjak atau tidak.
  * @author Devi Handevi
  * @author Riky Setiawan
  */
-public class Tile {
+public class Tile implements Drawable {
     /**
      * Attribute untuk menyimpan posisi absis tile.
      */
@@ -22,6 +29,21 @@ public class Tile {
      * Attribute untuk menyimpan objek yang ditaruh di ubin.
      */
     private TileObject object;
+    /**
+     * Attribute untuk menyimpan gambar.
+     */
+    private Image image;
+    
+    /**
+     * Constructor untuk mengisinialisasi gambar awal.
+     */
+    public Tile() {
+        try {
+            this.image = ImageIO.read(new URL("chipgame/images/tile.jpg"));
+        } catch (IOException ex) {
+            Logger.getLogger(Tile.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * Method untuk mendapatkan objek apa yang ditaruh di ubin.
@@ -51,5 +73,18 @@ public class Tile {
      */
     public void addObject(TileObject object) {
         this.object = object;
+    }
+
+    /**
+     * Method untuk mendapatkan gambar.
+     * @return lantai kosong jika tile tidak memiliki objek, lantai berisi objek jika sebaliknya
+     */
+    @Override
+    public Image getImage() {
+        if(this.object==null) {
+            return this.image;
+        } else {
+            return this.object.getImage();
+        }
     }
 }

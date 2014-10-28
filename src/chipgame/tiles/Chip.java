@@ -6,13 +6,19 @@ package chipgame.tiles;
 
 //import java.util.LinkedList;
 import java.awt.Color;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  * Kelas Chip sebagai player.
  *
  * @author Devi Handevi 2013730015
  */
-public class Chip {
+public class Chip implements Drawable {
 
     /**
      * Attribute untuk menyimpan posisi absis chip.
@@ -40,17 +46,11 @@ public class Chip {
      * Attribute array dari kumpulan key berwarna. [0]Red,[1]Green,[2]Blue
      */
     private int[] coloredKey;
-
-    //!!! disini perlu perubahan
-    //ganti persyaratan key dan door juga
-    //jika key merah, door merah terbuka
-    //tidlah key yang dak perlu ada jumibutuhkan untuk suatu door
-    //key menggunakan array 1D, dengan panjang 3 (?) untuk warna (mis. R G B)
-    //tambah setiap mendapatkan key
-    //kurang setiap membuka door
-    //jangan lupa hilangkan yang if if untuk key yang lama
-    //perlu getter jumlah kunci sesuai warna
-    //cek juga di board karena ada keyRequired
+    /**
+     * Attribute Image untuk gambar chip.
+     */
+    private Image image;
+    
     /**
      * Constructor untuk membuat objek dari chip.
      *
@@ -66,6 +66,12 @@ public class Chip {
         this.ICRequired = ICRequired;
         this.win = 0;
         this.coloredKey = new int[3];
+        
+        try {
+            this.image = ImageIO.read(new URL("chipgame/images/chip.jpg"));
+        } catch (IOException ex) {
+            Logger.getLogger(Chip.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -233,5 +239,14 @@ public class Chip {
      */
     public int getCondition() {
         return this.win;
+    }
+
+    /**
+     * Method untuk mendapatkan gambar.
+     * @return gambar chip
+     */
+    @Override
+    public Image getImage() {
+        return this.image;
     }
 }

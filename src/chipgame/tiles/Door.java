@@ -5,13 +5,27 @@
 package chipgame.tiles;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  *
  * @author Devi
  */
-public class Door extends TileObject {//implements Conditional {
+public class Door extends TileObject {
 
+    public Door() {
+        try {
+            this.image = ImageIO.read(new URL("chipgame/images/door.jpg"));
+        } catch (IOException ex) {
+            Logger.getLogger(Door.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * Atribut warna dari door
      */
@@ -54,4 +68,12 @@ public class Door extends TileObject {//implements Conditional {
         return false;
     }
     
+    /**
+     * Method untuk mendapatkan gambar.
+     * @return gambar door
+     */
+    @Override
+    public Image getImage() {
+        return this.image;
+    }
 }

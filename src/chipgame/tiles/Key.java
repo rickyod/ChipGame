@@ -5,6 +5,12 @@
 package chipgame.tiles;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -12,6 +18,14 @@ import java.awt.Color;
  */
 public class Key extends TileObject {
 
+    public Key() {
+        try {
+            this.image = ImageIO.read(new URL("chipgame/images/key.jpg"));
+        } catch (IOException ex) {
+            Logger.getLogger(Key.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * Atribut warna dari key
      * (Red , Green , Blue)
@@ -50,5 +64,14 @@ public class Key extends TileObject {
     public Color getColor()
     {
         return this.color;
+    }
+    
+    /**
+     * Method untuk mendapatkan gambar.
+     * @return gambar key
+     */
+    @Override
+    public Image getImage() {
+        return this.image;
     }
 }

@@ -4,6 +4,13 @@
  */
 package chipgame.tiles;
 
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+
 /**
  * Api sebagai objek yang dapat ditaruh di ubin yang tidak dapat diambil dan dapat diinjak. 
  * Jika diinjak, player akan mati dan permainan selesai.
@@ -11,6 +18,14 @@ package chipgame.tiles;
  */
 public class Fire extends TileObject {
 
+    public Fire() {
+        try {
+            this.image = ImageIO.read(new URL("chipgame/images/fire.jpg"));
+        } catch (IOException ex) {
+            Logger.getLogger(Fire.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     /**
      * Method untuk mengecek apakah objek ini dapat diinjak atau tidak.
      * @return 1, berarti bisa diinjak namun penginjak mati dan permainan berakhir
@@ -29,4 +44,12 @@ public class Fire extends TileObject {
         return false;
     }
     
+    /**
+     * Method untuk mendapatkan gambar.
+     * @return gambar fire
+     */
+    @Override
+    public Image getImage() {
+        return this.image;
+    }
 }
