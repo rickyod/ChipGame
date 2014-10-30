@@ -18,7 +18,7 @@ public class Barrier extends TileObject implements Conditional {
 
     public Barrier() {
         try {
-            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/barrier.jpg"));
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/barrier.png"));
         } catch (IOException ex) {
             Logger.getLogger(Barrier.class.getName()).log(Level.SEVERE, null, ex);
         }

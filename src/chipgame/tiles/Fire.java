@@ -19,7 +19,7 @@ public class Fire extends TileObject {
 
     public Fire() {
         try {
-            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire.jpg"));
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire1.png"));
         } catch (IOException ex) {
             Logger.getLogger(Fire.class.getName()).log(Level.SEVERE, null, ex);
         }

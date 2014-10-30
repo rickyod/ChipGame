@@ -38,7 +38,7 @@ public class Tile implements Drawable {
      */
     public Tile() {
         try {
-            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/tile.jpg"));
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/tile.png"));
         } catch (IOException ex) {
             Logger.getLogger(Tile.class.getName()).log(Level.SEVERE, null, ex);
         }

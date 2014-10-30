@@ -26,11 +26,13 @@ public class Key extends TileObject {
         this.color = color;
         try {
             if (this.color.equals(Color.RED)) {
-                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/keyred.jpg"));
+                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/key_red.png"));
             } else if (this.color.equals(Color.GREEN)) {
-                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/keygreen.jpg"));
+                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/key_green.png"));
             } else if (this.color.equals(Color.BLUE)) {
-                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/keyblue.jpg"));
+                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/key_blue.png"));
+            } else if (this.color.equals(Color.YELLOW)) {
+                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/key_yellow.png"));
             }
         } catch (IOException ex) {
             Logger.getLogger(Key.class.getName()).log(Level.SEVERE, null, ex);

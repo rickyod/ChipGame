@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 public class RunGameGUIMode extends JPanel {
 
     private final Board board = new Board();
+    private final int tileSize;
     private static int WINDOWSIZE_WIDTH = 485;
     private static int WINDOWSIZE_HEIGHT = 500;
    
@@ -26,6 +27,7 @@ public class RunGameGUIMode extends JPanel {
         setFocusable(true);
         KeyListener listener = new KeyListener();
         addKeyListener(listener);
+        this.tileSize = 48;
     }
     
 
@@ -65,10 +67,10 @@ public class RunGameGUIMode extends JPanel {
         for (int i = 0; i < this.board.getWidth(); i++) {
             for (int j = 0; j < this.board.getLength(); j++) {
                 img = this.board.getArrayOfTile()[i][j].getImage();
-                g2d.drawImage(img,j*48,i*48,this);
+                g2d.drawImage(img,j*tileSize,i*tileSize,this);
             }     
         }
-        g2d.drawImage(board.getChip().getImage(), board.getChip().getX() * 48, board.getChip().getY() * 48, this);   
+        g2d.drawImage(board.getChip().getImage(), board.getChip().getX() * tileSize, board.getChip().getY() * tileSize, this);   
     }
 
     public static void main(String[] args) {

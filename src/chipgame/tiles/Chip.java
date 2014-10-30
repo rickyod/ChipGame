@@ -67,7 +67,7 @@ public class Chip implements Drawable {
         this.coloredKey = new int[3];
         
         try {
-            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip.png"));
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_down2.png"));
         } catch (IOException ex) {
             Logger.getLogger(Chip.class.getName()).log(Level.SEVERE, null, ex);
         }
