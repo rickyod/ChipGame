@@ -49,10 +49,6 @@ public class RunGameGUIMode extends JPanel {
                 } else if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_W) {
                     board.move("w");
                 }
-            } else if (board.getCondition() == 1) {
-                System.out.println("WIN");
-            } else {
-                System.out.println("LOSE");
             }
             repaint();
         }
@@ -70,7 +66,23 @@ public class RunGameGUIMode extends JPanel {
                 g2d.drawImage(img,j*tileSize,i*tileSize,this);
             }     
         }
-        g2d.drawImage(board.getChip().getImage(), board.getChip().getX() * tileSize, board.getChip().getY() * tileSize, this);   
+        if(this.board.getCondition()!=-1)
+        {
+            g2d.drawImage(board.getChip().getImage(), board.getChip().getX() * tileSize, board.getChip().getY() * tileSize, this); 
+        }
+        if (this.board.getCondition() == 1 || this.board.getCondition() == -1) 
+        {
+            g2d.setColor(Color.BLACK);
+            g2d.setFont(new Font("Arial", Font.BOLD, 48));
+            if (this.board.getCondition() == 1) 
+            {
+                g2d.drawString("YOU WIN!",getWidth()/4,getHeight()/2);
+            }
+            else 
+            {
+                g2d.drawString("YOU LOSE!",getWidth()/4,getHeight()/2);
+            }
+        }
     }
 
     public static void main(String[] args) {

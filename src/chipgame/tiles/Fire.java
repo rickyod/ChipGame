@@ -31,6 +31,11 @@ public class Fire extends TileObject {
      */
     @Override
     public int canBeStepped() {
+        try {
+            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_burnt.png"));
+        } catch (IOException ex) {
+            Logger.getLogger(Fire.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return 1;
     }
 

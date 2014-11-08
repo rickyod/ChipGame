@@ -49,7 +49,10 @@ public class Chip implements Drawable {
      * Attribute Image untuk gambar chip.
      */
     private Image image;
-    
+    private Image up;
+    private Image down;
+    private Image left;
+    private Image right;
     /**
      * Constructor untuk membuat objek dari chip.
      *
@@ -68,6 +71,10 @@ public class Chip implements Drawable {
         
         try {
             this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_down2.png"));
+            up = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_up2.png"));
+            down = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_down2.png"));
+            left = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_left2.png"));
+            right = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_right2.png"));
         } catch (IOException ex) {
             Logger.getLogger(Chip.class.getName()).log(Level.SEVERE, null, ex);
         }
