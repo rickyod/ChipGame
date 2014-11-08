@@ -50,10 +50,25 @@ public class RunGameGUIMode extends JPanel {
                     board.move("w");
                 }
             }
+            if(board.getCondition()==1)
+            {
+                if(evt.getKeyCode() == KeyEvent.VK_SPACE)
+                {
+                    board.getNextLevel();
+                    board.reset();
+                }
+            } 
+            if(board.getCondition()==-1)
+            {
+                if(evt.getKeyCode() == KeyEvent.VK_SPACE)
+                {
+                    board.reset();
+                }
+            }
             repaint();
         }
     }
-
+    
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -66,10 +81,7 @@ public class RunGameGUIMode extends JPanel {
                 g2d.drawImage(img,j*tileSize,i*tileSize,this);
             }     
         }
-        if(this.board.getCondition()!=-1)
-        {
-            g2d.drawImage(board.getChip().getImage(), board.getChip().getX() * tileSize, board.getChip().getY() * tileSize, this); 
-        }
+        g2d.drawImage(board.getChip().getImage(), board.getChip().getX() * tileSize, board.getChip().getY() * tileSize, this); 
         if (this.board.getCondition() == 1 || this.board.getCondition() == -1) 
         {
             g2d.setColor(Color.BLACK);

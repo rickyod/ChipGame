@@ -53,6 +53,7 @@ public class Chip implements Drawable {
     private Image down;
     private Image left;
     private Image right;
+    private Image burnt;
     /**
      * Constructor untuk membuat objek dari chip.
      *
@@ -75,6 +76,7 @@ public class Chip implements Drawable {
             down = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_down2.png"));
             left = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_left2.png"));
             right = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_right2.png"));
+            burnt = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_burnt.png"));
         } catch (IOException ex) {
             Logger.getLogger(Chip.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -99,6 +101,7 @@ public class Chip implements Drawable {
                     this.move(moveX, moveY);
                 } else if (object.canBeStepped() == 1) { //bisa bergerak, tapi mati
                     this.move(moveX, moveY);
+                    this.image = this.burnt;
                     this.win = -1;
                 } else if (object.canBeStepped() == 2) { //bisa bergerak, chip menang
                     this.move(moveX, moveY);
@@ -245,6 +248,14 @@ public class Chip implements Drawable {
      */
     public int getCondition() {
         return this.win;
+    }
+    
+    /**
+     * Method untuk mengembalikan kondisi chip untuk melanjutkan permainan.
+     */
+    public void setDefaultCondition()
+    {
+        this.win=0;
     }
 
     /**

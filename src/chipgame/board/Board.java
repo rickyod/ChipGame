@@ -6,7 +6,6 @@ package chipgame.board;
 
 import chipgame.level.*;
 import chipgame.tiles.*;
-import java.awt.Color;
 
 /**
  * Kelas sebagai papan permainan yang dapat menjalankan game dalam text mode
@@ -44,6 +43,7 @@ public class Board {
      * Constructor default untuk men-set papan permainan.
      */
     public Board() {
+        //Default level 1
         this.level = new Level1();
         this.width = level.getWidth();
         this.length = level.getLength();
@@ -173,5 +173,19 @@ public class Board {
     public Chip getChip()
     {
         return this.chip;
+    }
+    
+    /**
+     * Method untuk melanjutkan level.
+     */
+    public void getNextLevel() {
+        this.level = this.level.getNextLevel();
+    }
+
+    public void reset() {
+        this.ICRequired= this.level.getICRequired();
+        this.chip = new Chip(this.level.getCoordinateChip().x,this.level.getCoordinateChip().y,this.ICRequired);
+        this.level.createMap();
+        this.tiles=  this.level.getMap();
     }
 }
