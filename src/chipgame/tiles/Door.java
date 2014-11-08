@@ -24,16 +24,17 @@ public class Door extends TileObject {
     
     public Door(Color color)
     {
+        this.image = new Image[1];
         this.color=color;
         try {
             if(color.equals(Color.RED)) {
-                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_red.png"));
+                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_red.png"));
             } else if(color.equals(Color.GREEN)) {
-                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_green.png"));
+                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_green.png"));
             } else if(color.equals(Color.BLUE)) {
-                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_blue.png"));
+                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_blue.png"));
             } else if(color.equals(Color.YELLOW)) {
-                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_yellow.png"));
+                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_yellow.png"));
             } 
         } catch (IOException ex) {
             Logger.getLogger(Door.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,6 +79,6 @@ public class Door extends TileObject {
      */
     @Override
     public Image getImage() {
-        return this.image;
+        return this.image[0];
     }
 }

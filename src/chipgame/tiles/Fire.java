@@ -17,9 +17,18 @@ import javax.imageio.ImageIO;
  */
 public class Fire extends TileObject {
 
+    private int imageIterator;
+    
     public Fire() {
+        this.image = new Image[6];
+        this.imageIterator = 0;
         try {
-            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire1.png"));
+            this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire1.png"));
+            this.image[1] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire2.png"));
+            this.image[2] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire3.png"));
+            this.image[3] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire4.png"));
+            this.image[4] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire5.png"));
+            this.image[5] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire6.png"));
         } catch (IOException ex) {
             Logger.getLogger(Fire.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,6 +58,8 @@ public class Fire extends TileObject {
      */
     @Override
     public Image getImage() {
-        return this.image;
+        Image i = this.image[this.imageIterator];
+        this.imageIterator = (this.imageIterator+1)%6;
+        return i;
     }
 }

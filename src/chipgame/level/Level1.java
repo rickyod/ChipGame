@@ -50,19 +50,19 @@ public class Level1 extends Level{
 
         this.tiles[8][5].addObject(this.greenKey);
         this.tiles[8][6].addObject(this.greenDoor);
+        
+        this.tiles[1][3].addObject(new Fire());
+        this.tiles[2][3].addObject(new Fire());
+        this.tiles[2][4].addObject(new Fire());
 
-        this.tiles[1][3].addObject(this.fire);
-        this.tiles[2][3].addObject(this.fire);
-        this.tiles[2][4].addObject(this.fire);
+        this.tiles[2][7].addObject(new Fire());
+        this.tiles[3][7].addObject(new Fire());
+        this.tiles[3][8].addObject(new Fire());
 
-        this.tiles[2][7].addObject(this.fire);
-        this.tiles[3][7].addObject(this.fire);
-        this.tiles[3][8].addObject(this.fire);
-
-        this.tiles[7][2].addObject(this.fire);
-        this.tiles[6][3].addObject(this.fire);
-        this.tiles[7][3].addObject(this.fire);
-        this.tiles[8][3].addObject(this.fire);
+        this.tiles[7][2].addObject(new Fire());
+        this.tiles[6][3].addObject(new Fire());
+        this.tiles[7][3].addObject(new Fire());
+        this.tiles[8][3].addObject(new Fire());
 
         for (int i = 3; i <= 7; i++) {
             this.tiles[5][i].addObject(this.wall);
@@ -96,7 +96,7 @@ public class Level1 extends Level{
     }
 
     @Override
-    public Point getCoordinateChip() {
+    public Point getChipCoordinate() {
         return new Point(1,1);   
     }
 

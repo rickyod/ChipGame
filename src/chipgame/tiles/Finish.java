@@ -16,12 +16,16 @@ import javax.imageio.ImageIO;
  */
 public class Finish extends TileObject {
 
-    //private int imageIterator;
+    private int imageIterator;
     
     public Finish() {
-        //this.imageIterator = 0;
+        this.image = new Image[4];
+        this.imageIterator = 0;
         try {
-            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/finish1.png"));
+            this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/finish1.png"));
+            this.image[1] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/finish2.png"));
+            this.image[2] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/finish3.png"));
+            this.image[3] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/finish4.png"));
         } catch (IOException ex) {
             Logger.getLogger(Finish.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,9 +55,8 @@ public class Finish extends TileObject {
      */
     @Override
     public Image getImage() {
-//        Image i = this.image;
-//        this.imageIterator = (this.imageIterator+1)%4;
-//        return i;
-        return this.image;
+        Image i = this.image[this.imageIterator];
+        this.imageIterator = (this.imageIterator+1)%4;
+        return i;
     }
 }

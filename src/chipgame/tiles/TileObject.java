@@ -16,7 +16,7 @@ public abstract class TileObject implements Drawable{
     /**
      * Attribute untuk menyimpan gambar.
      */
-    protected Image image;
+    protected Image[] image;
     
     /**
      * Method untuk mengecek apakah objek ini dapat diinjak atau tidak.

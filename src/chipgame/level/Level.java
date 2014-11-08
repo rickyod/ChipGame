@@ -20,11 +20,11 @@ public abstract class Level {
      */
     protected Tile[][] tiles;
     /**
-     * Attribut width dari map.
+     * Attribut lebar dari map.
      */
     protected int width;
     /**
-     * Attribut length dari map.
+     * Attribut panjang dari map.
      */
     protected int length;
     /**
@@ -35,41 +35,41 @@ public abstract class Level {
     //Objek - objek chipgame.tiles
     
     /**
-     * Attribute objek dari kelas
+     * Attribute objek barrier dari kelas
      */
-    protected Barrier barrier = new Barrier();
+    protected Barrier barrier;
     /**
      * Attribute objek dari kelas
      */
-    protected Door redDoor = new Door(Color.red);
+    protected Door redDoor;
     /**
      * Attribute objek dari kelas
      */
-    protected Door greenDoor = new Door(Color.green);
+    protected Door greenDoor;
     /**
      * Attribute objek dari kelas
      */
-    protected Door blueDoor = new Door(Color.blue);
+    protected Door blueDoor;
     /**
      * Attribute objek dari kelas
      */
-    protected Door yellowDoor = new Door(Color.yellow);
+    protected Door yellowDoor;
     /**
      * Attribute objek dari kelas
      */
-    protected Key redKey = new Key(Color.red);
+    protected Key redKey;
     /**
      * Attribute objek dari kelas
      */
-    protected Key greenKey = new Key(Color.green);
+    protected Key greenKey;
     /**
      * Attribute objek dari kelas
      */
-    protected Key blueKey = new Key(Color.blue);
+    protected Key blueKey;
     /**
      * Attribute objek dari kelas
      */
-    protected Key yellowKey = new Key(Color.yellow);
+    protected Key yellowKey;
     /**
      * Attribute objek dari kelas
      */
@@ -77,16 +77,31 @@ public abstract class Level {
     /**
      * Attribute objek dari kelas
      */
-    protected Fire fire = new Fire();
+    protected Fire fire;
     /**
      * Attribute objek dari kelas
      */
-    protected IntegratedCircuit IC = new IntegratedCircuit();
+    protected IntegratedCircuit IC;
     /**
      * Attribute objek dari kelas
      */
-    protected Wall wall = new Wall();
+    protected Wall wall;
     
+    public Level() {
+        this.barrier = new Barrier();
+        this.redDoor = new Door(Color.red);
+        this.greenDoor = new Door(Color.green);
+        this.blueDoor = new Door(Color.blue);
+        this.yellowDoor = new Door(Color.yellow);
+        this.redKey = new Key(Color.red);
+        this.greenKey = new Key(Color.green);
+        this.blueKey = new Key(Color.blue);
+        this.yellowKey = new Key(Color.yellow);
+        this.finish = new Finish();
+        this.fire = new Fire();
+        this.IC = new IntegratedCircuit();
+        this.wall = new Wall();
+    }
     
     
     /**
@@ -116,7 +131,7 @@ public abstract class Level {
     /**
      * Method untuk mendapatkan koordinat pertama chip.
      */
-    public abstract Point getCoordinateChip();
+    public abstract Point getChipCoordinate();
     
     /**
      * Method untuk membuat map pada level.

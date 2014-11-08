@@ -17,8 +17,9 @@ import javax.imageio.ImageIO;
 public class Barrier extends TileObject implements Conditional {
 
     public Barrier() {
+        this.image = new Image[1];
         try {
-            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/barrier.png"));
+            this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/barrier.png"));
         } catch (IOException ex) {
             Logger.getLogger(Barrier.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -59,7 +60,7 @@ public class Barrier extends TileObject implements Conditional {
      */
     @Override
     public Image getImage() {
-        return this.image;
+        return this.image[0];
     }
     
 }

@@ -53,7 +53,7 @@ public class Board {
                 this.tiles[i][j] = new Tile();
             }
         }
-        this.chip = new Chip(level.getCoordinateChip().x,level.getCoordinateChip().y, ICRequired);
+        this.chip = new Chip(level.getChipCoordinate().x,level.getChipCoordinate().y, level.getICRequired());
         this.tiles = level.getMap();
         
     }
@@ -62,8 +62,7 @@ public class Board {
      * Method untuk mendapatkan tile-tile di dalam board.
      * @return array of tile di dalam board
      */
-    public Tile[][] getArrayOfTile()
-    {
+    public Tile[][] getArrayOfTile() {
         return this.tiles;
     }
     
@@ -71,8 +70,7 @@ public class Board {
      * Method untuk mendapatkan panjang board.
      * @return 
      */
-    public int getLength()
-    {
+    public int getLength() {
         return this.length;
     }
     
@@ -80,8 +78,7 @@ public class Board {
      * Method untuk mendapatkan lebar board.
      * @return 
      */
-    public int getWidth()
-    {
+    public int getWidth() {
         return this.width;
     }
     
@@ -184,7 +181,7 @@ public class Board {
 
     public void reset() {
         this.ICRequired= this.level.getICRequired();
-        this.chip = new Chip(this.level.getCoordinateChip().x,this.level.getCoordinateChip().y,this.ICRequired);
+        this.chip = new Chip(this.level.getChipCoordinate().x,this.level.getChipCoordinate().y,this.ICRequired);
         this.level.createMap();
         this.tiles=  this.level.getMap();
     }

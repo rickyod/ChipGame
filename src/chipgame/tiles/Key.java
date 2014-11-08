@@ -23,16 +23,17 @@ public class Key extends TileObject {
     private Color color;
 
     public Key(Color color) {
+        this.image = new Image[1];
         this.color = color;
         try {
             if (this.color.equals(Color.RED)) {
-                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/key_red.png"));
+                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/key_red.png"));
             } else if (this.color.equals(Color.GREEN)) {
-                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/key_green.png"));
+                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/key_green.png"));
             } else if (this.color.equals(Color.BLUE)) {
-                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/key_blue.png"));
+                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/key_blue.png"));
             } else if (this.color.equals(Color.YELLOW)) {
-                this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/key_yellow.png"));
+                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/key_yellow.png"));
             }
         } catch (IOException ex) {
             Logger.getLogger(Key.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,6 +76,6 @@ public class Key extends TileObject {
      */
     @Override
     public Image getImage() {
-        return this.image;
+        return this.image[0];
     }
 }

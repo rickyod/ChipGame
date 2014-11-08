@@ -9,6 +9,8 @@ import chipgame.board.Board;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.JPanel;
 
@@ -30,7 +32,6 @@ public class RunGameGUIMode extends JPanel {
         this.tileSize = 48;
     }
     
-
     private class KeyListener extends KeyAdapter {
 
         /**
@@ -49,19 +50,13 @@ public class RunGameGUIMode extends JPanel {
                 } else if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_W) {
                     board.move("w");
                 }
-            }
-            if(board.getCondition()==1)
-            {
-                if(evt.getKeyCode() == KeyEvent.VK_SPACE)
-                {
+            } else if(board.getCondition()==1) {
+                if(evt.getKeyCode() == KeyEvent.VK_SPACE) {
                     board.getNextLevel();
                     board.reset();
                 }
-            } 
-            if(board.getCondition()==-1)
-            {
-                if(evt.getKeyCode() == KeyEvent.VK_SPACE)
-                {
+            } else if(board.getCondition()==-1) {
+                if(evt.getKeyCode() == KeyEvent.VK_SPACE) {
                     board.reset();
                 }
             }
@@ -73,28 +68,29 @@ public class RunGameGUIMode extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-        Image img = null;
         //Draw
         for (int i = 0; i < this.board.getWidth(); i++) {
             for (int j = 0; j < this.board.getLength(); j++) {
-                img = this.board.getArrayOfTile()[i][j].getImage();
-                g2d.drawImage(img,j*tileSize,i*tileSize,this);
+                g2d.drawImage(this.board.getArrayOfTile()[i][j].getImage(),j*tileSize,i*tileSize,this);
             }     
         }
         g2d.drawImage(board.getChip().getImage(), board.getChip().getX() * tileSize, board.getChip().getY() * tileSize, this); 
-        if (this.board.getCondition() == 1 || this.board.getCondition() == -1) 
-        {
+        if (this.board.getCondition() != 0) {
             g2d.setColor(Color.BLACK);
             g2d.setFont(new Font("Arial", Font.BOLD, 48));
-            if (this.board.getCondition() == 1) 
-            {
+            if (this.board.getCondition() == 1) {
                 g2d.drawString("YOU WIN!",getWidth()/4,getHeight()/2);
-            }
-            else 
-            {
+            } else { // == -1
                 g2d.drawString("YOU LOSE!",getWidth()/4,getHeight()/2);
             }
         }
+        
+        try {
+            Thread.sleep(45);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(RunGameGUIMode.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        repaint();
     }
 
     public static void main(String[] args) {

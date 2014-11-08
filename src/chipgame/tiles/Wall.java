@@ -18,8 +18,9 @@ import javax.imageio.ImageIO;
 public class Wall extends TileObject {
 
     public Wall() {
+        this.image = new Image[1];
         try {
-            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/wall.png"));
+            this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/wall.png"));
         } catch (IOException ex) {
             Logger.getLogger(Wall.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,6 +50,6 @@ public class Wall extends TileObject {
      */
     @Override
     public Image getImage() {
-        return this.image;
+        return this.image[0];
     }
 }

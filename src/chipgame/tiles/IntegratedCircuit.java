@@ -18,8 +18,9 @@ import javax.imageio.ImageIO;
 public class IntegratedCircuit extends TileObject {
 
     public IntegratedCircuit() {
+        this.image = new Image[1];
         try {
-            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/IC.png"));
+            this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/IC.png"));
         } catch (IOException ex) {
             Logger.getLogger(IntegratedCircuit.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,6 +50,6 @@ public class IntegratedCircuit extends TileObject {
      */
     @Override
     public Image getImage() {
-        return this.image;
+        return this.image[0];
     }
 }
