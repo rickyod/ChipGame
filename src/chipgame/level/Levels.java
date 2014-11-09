@@ -32,11 +32,11 @@ public class Levels {
      * Constructor untuk menginisialisasi seluruh level.
      */
     public Levels() {
-        listLevel = new LinkedList<Level>();
-        listLevel.add(new Level1());
-        listLevel.add(new Level2());
-        li = this.listLevel.listIterator();
-        currentLevel = (Level)this.li.next();
+        this.listLevel = new LinkedList<Level>();
+        this.listLevel.add(new Level1());
+        this.listLevel.add(new Level2());
+        this.li = this.listLevel.listIterator();
+        this.currentLevel = (Level)this.li.next();
     }
     
     /**

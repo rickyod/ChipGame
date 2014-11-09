@@ -46,18 +46,8 @@ public class Board {
      * Constructor default untuk men-set papan permainan.
      */
     public Board() {
-        //Default level 1
         this.level = new Levels();
-        this.width = level.getWidth();
-        this.length = level.getLength();
-        this.tiles = new Tile[width][length];
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < length; j++) {
-                this.tiles[i][j] = new Tile();
-            }
-        }
-        this.chip = new Chip(level.getInitialChipCoordinate().x,level.getInitialChipCoordinate().y, level.getICRequired());
-        this.tiles = level.getMap();
+        this.set();
     }
 
     /**
@@ -187,9 +177,11 @@ public class Board {
      * Method untuk menginisialisasi attribute.
      */
     public void set() {
+        this.width = level.getWidth();
+        this.length = level.getLength();
         this.ICRequired = this.level.getICRequired();
         this.chip = new Chip(this.level.getInitialChipCoordinate().x,this.level.getInitialChipCoordinate().y,this.ICRequired);
-        this.tiles=  this.level.getMap();
+        this.tiles = this.level.getMap();
     }
     
     public void reset() {
