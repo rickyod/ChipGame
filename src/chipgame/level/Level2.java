@@ -101,11 +101,4 @@ public class Level2 extends Level{
     public Point getChipCoordinate() {
         return new Point(1,1);   
     }
-
-    @Override
-    public Level getNextLevel() {
-        return this.nextLevel;
-    }
-
-    
 }

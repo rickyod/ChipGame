@@ -53,7 +53,6 @@ public class RunGameGUIMode extends JPanel {
             } else if(board.getCondition()==1) {
                 if(evt.getKeyCode() == KeyEvent.VK_SPACE) {
                     board.getNextLevel();
-                    board.reset();
                 }
             } else if(board.getCondition()==-1) {
                 if(evt.getKeyCode() == KeyEvent.VK_SPACE) {

@@ -17,7 +17,6 @@ import java.awt.Point;
 public class Level1 extends Level{
     
     public Level1() {
-        this.nextLevel = new Level2();
         this.width = 10;
         this.length = 10;
         this.tiles = new Tile[width][length];
@@ -98,10 +97,5 @@ public class Level1 extends Level{
     @Override
     public Point getChipCoordinate() {
         return new Point(1,1);   
-    }
-
-    @Override
-    public Level getNextLevel() {
-        return this.nextLevel;
     }
 }

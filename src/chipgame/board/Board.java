@@ -6,6 +6,8 @@ package chipgame.board;
 
 import chipgame.level.*;
 import chipgame.tiles.*;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 /**
  * Kelas sebagai papan permainan yang dapat menjalankan game dalam text mode
@@ -40,11 +42,24 @@ public class Board {
      */
     private Level level;
     /**
+     * Attribute linked list of all stages.
+     */
+    private LinkedList<Level> listLevel;
+    /**
+     * Attribute list iterator of list level.
+     */
+    private ListIterator li;
+    /**
      * Constructor default untuk men-set papan permainan.
      */
     public Board() {
+        //Initialize all level
+        listLevel = new LinkedList<Level>();
+        listLevel.add(new Level1());
+        listLevel.add(new Level2());
+        li = this.listLevel.listIterator();
         //Default level 1
-        this.level = new Level1();
+        this.level = (Level)this.li.next();
         this.width = level.getWidth();
         this.length = level.getLength();
         this.tiles = new Tile[width][length];
@@ -176,7 +191,11 @@ public class Board {
      * Method untuk melanjutkan level.
      */
     public void getNextLevel() {
-        this.level = this.level.getNextLevel();
+        if(li.hasNext())
+        {
+            this.level = (Level)this.li.next();
+            reset();
+        }
     }
 
     public void reset() {

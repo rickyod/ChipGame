@@ -27,10 +27,6 @@ public abstract class Level {
      * Attribut panjang dari map.
      */
     protected int length;
-    /**
-     * Attribute the next level of the current level.
-     */
-    protected Level nextLevel;
     
     //Objek - objek chipgame.tiles
     
@@ -137,12 +133,5 @@ public abstract class Level {
      * Method untuk membuat map pada level.
      */
     public abstract void createMap() ;
-    
-    /**
-     * Method untuk mendapatkan level selanjutnya
-     * @return 
-     */
-    public abstract Level getNextLevel();
 
-    
 }
