@@ -94,8 +94,8 @@ public class Level1 extends Level {
 
         //Door
         this.tiles[9][13].addObject(this.redDoor);
-        this.tiles[9][14].addObject(this.redDoor);
-        this.tiles[9][15].addObject(this.redDoor);
+        this.tiles[9][14].addObject(this.blueDoor);
+        this.tiles[9][15].addObject(this.greenDoor);
         //Barrier And Finish
         this.tiles[9][16].addObject(this.barrier);
         this.tiles[9][17].addObject(new Finish());
