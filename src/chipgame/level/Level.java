@@ -20,16 +20,19 @@ public abstract class Level {
      */
     protected Tile[][] tiles;
     /**
-     * Attribut lebar dari map.
+     * Attribute lebar dari map.
      */
     protected int width;
     /**
-     * Attribut panjang dari map.
+     * Attribute panjang dari map.
      */
     protected int length;
+    /**
+     * Attribute banyak IC yang dibutuhkan.
+     */
+    protected int ICRequired;
     
     //Objek - objek chipgame.tiles
-    
     /**
      * Attribute objek barrier dari kelas
      */
@@ -99,39 +102,50 @@ public abstract class Level {
         this.wall = new Wall();
     }
     
-    
     /**
      * Method untuk mendapatkan array of tile , array 2 dimensi dari map.
      * @return 
      */
-    public abstract Tile[][] getMap();
+    public Tile[][] getMap() {
+        return this.tiles;
+    }
     
     /**
      * Method untuk mendapatkan IC yang dibutuhkan pada map.
      * @return int jumlah IC
      */
-    public abstract int getICRequired();
+    public int getICRequired() {
+        return this.ICRequired;
+    }
     
     /**
      * Method untuk mendapatkan lebar map.
      * @return int jumlah IC
      */
-    public abstract int getWidth();
+    public int getWidth() {
+        return this.width;
+    }
     
     /**
      * Method untuk mendapatkan panjang map.
      * @return int jumlah IC
      */
-    public abstract int getLength();
+    public int getLength() {
+        return this.length;
+    }
             
     /**
      * Method untuk mendapatkan koordinat pertama chip.
      */
-    public abstract Point getChipCoordinate();
+    public abstract Point getInitialChipCoordinate();
     
     /**
      * Method untuk membuat map pada level.
      */
-    public abstract void createMap() ;
-
+    protected abstract void createMap();
+    
+    /**
+     * Method untuk menginisialisasi level.
+     */
+    public abstract void initializeLevel();
 }

@@ -40,26 +40,14 @@ public class Board {
     /**
      * Attribute level.
      */
-    private Level level;
-    /**
-     * Attribute linked list of all stages.
-     */
-    private LinkedList<Level> listLevel;
-    /**
-     * Attribute list iterator of list level.
-     */
-    private ListIterator li;
+    private Levels level;
+    
     /**
      * Constructor default untuk men-set papan permainan.
      */
     public Board() {
-        //Initialize all level
-        listLevel = new LinkedList<Level>();
-        listLevel.add(new Level1());
-        listLevel.add(new Level2());
-        li = this.listLevel.listIterator();
         //Default level 1
-        this.level = (Level)this.li.next();
+        this.level = new Levels();
         this.width = level.getWidth();
         this.length = level.getLength();
         this.tiles = new Tile[width][length];
@@ -68,9 +56,8 @@ public class Board {
                 this.tiles[i][j] = new Tile();
             }
         }
-        this.chip = new Chip(level.getChipCoordinate().x,level.getChipCoordinate().y, level.getICRequired());
+        this.chip = new Chip(level.getInitialChipCoordinate().x,level.getInitialChipCoordinate().y, level.getICRequired());
         this.tiles = level.getMap();
-        
     }
 
     /**
@@ -191,17 +178,22 @@ public class Board {
      * Method untuk melanjutkan level.
      */
     public void getNextLevel() {
-        if(li.hasNext())
-        {
-            this.level = (Level)this.li.next();
-            reset();
+        if(this.level.goToTheNextLevel()) {
+            this.set();
         }
     }
 
-    public void reset() {
-        this.ICRequired= this.level.getICRequired();
-        this.chip = new Chip(this.level.getChipCoordinate().x,this.level.getChipCoordinate().y,this.ICRequired);
-        this.level.createMap();
+    /**
+     * Method untuk menginisialisasi attribute.
+     */
+    public void set() {
+        this.ICRequired = this.level.getICRequired();
+        this.chip = new Chip(this.level.getInitialChipCoordinate().x,this.level.getInitialChipCoordinate().y,this.ICRequired);
         this.tiles=  this.level.getMap();
+    }
+    
+    public void reset() {
+        this.level.resetLevel();
+        this.set();
     }
 }

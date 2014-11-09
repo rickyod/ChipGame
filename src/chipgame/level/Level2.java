@@ -14,11 +14,17 @@ import java.awt.Point;
  *
  * @author ASUS
  */
-public class Level2 extends Level{
+public class Level2 extends Level {
 
     public Level2() {
+        this.initializeLevel();
+    }
+    
+    @Override
+    public void initializeLevel() {
         this.width = 10;
         this.length = 10;
+        this.ICRequired = 3;
         this.tiles = new Tile[width][length];
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < length; j++) {
@@ -29,7 +35,7 @@ public class Level2 extends Level{
     }
     
     @Override
-    public void createMap() {
+    protected void createMap() {
         
         for (int i = 0; i < width; i++) { //wall kiri
             this.tiles[i][0].addObject(this.wall);
@@ -49,9 +55,9 @@ public class Level2 extends Level{
         this.tiles[8][2].addObject(this.IC);
 
         this.tiles[4][7].addObject(this.greenKey);
-        this.tiles[8][5].addObject(this.greenKey);
+        this.tiles[8][5].addObject(this.redKey);
         this.tiles[5][8].addObject(this.greenDoor);
-        this.tiles[8][6].addObject(this.greenDoor);
+        this.tiles[8][6].addObject(this.redDoor);
 
         this.tiles[1][3].addObject(new Fire());
         this.tiles[2][3].addObject(new Fire());
@@ -78,27 +84,7 @@ public class Level2 extends Level{
     }
     
     @Override
-    public Tile[][] getMap() {
-        return this.tiles;
-    }
-
-    @Override
-    public int getICRequired() {
-        return 3;
-    }
-
-    @Override
-    public int getWidth() {
-        return this.width;
-    }
-
-    @Override
-    public int getLength() {
-        return this.length;
-    }
-
-    @Override
-    public Point getChipCoordinate() {
+    public Point getInitialChipCoordinate() {
         return new Point(1,1);   
     }
 }

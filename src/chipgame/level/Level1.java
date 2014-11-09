@@ -14,11 +14,17 @@ import java.awt.Point;
  *
  * @author ASUS
  */
-public class Level1 extends Level{
+public class Level1 extends Level {
     
     public Level1() {
+        this.initializeLevel();
+    }
+    
+    @Override
+    public void initializeLevel() {
         this.width = 10;
         this.length = 10;
+        this.ICRequired = 3;
         this.tiles = new Tile[width][length];
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < length; j++) {
@@ -29,7 +35,7 @@ public class Level1 extends Level{
     }
     
     @Override
-    public void createMap() {
+    protected void createMap() {
         for (int i = 0; i < width; i++) { //wall kiri
             this.tiles[i][0].addObject(this.wall);
         }
@@ -75,27 +81,7 @@ public class Level1 extends Level{
     }
     
     @Override
-    public Tile[][] getMap() {
-        return this.tiles;
-    }
-
-    @Override
-    public int getICRequired() {
-        return 3;
-    }
-
-    @Override
-    public int getWidth() {
-        return this.width;
-    }
-
-    @Override
-    public int getLength() {
-        return this.length;
-    }
-
-    @Override
-    public Point getChipCoordinate() {
+    public Point getInitialChipCoordinate() {
         return new Point(1,1);   
     }
 }
