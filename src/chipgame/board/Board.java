@@ -6,8 +6,6 @@ package chipgame.board;
 
 import chipgame.level.*;
 import chipgame.tiles.*;
-import java.util.LinkedList;
-import java.util.ListIterator;
 
 /**
  * Kelas sebagai papan permainan yang dapat menjalankan game dalam text mode
@@ -127,16 +125,16 @@ public class Board {
         boolean canMove;
 
         if (dir.equals("a")) {
-            steppedTile = this.tiles[this.chip.getY()][this.chip.getX() - 1];
+            steppedTile = this.tiles[this.chip.getX()-1][this.chip.getY()];
             canMove = this.chip.move(steppedTile.getWhatIsStepped(), -1, 0);
         } else if (dir.equals("d")) {
-            steppedTile = this.tiles[this.chip.getY()][this.chip.getX() + 1];
+            steppedTile = this.tiles[this.chip.getX()+1][this.chip.getY()];
             canMove = this.chip.move(steppedTile.getWhatIsStepped(), 1, 0);
         } else if (dir.equals("w")) {
-            steppedTile = this.tiles[this.chip.getY() - 1][this.chip.getX()];
+            steppedTile = this.tiles[this.chip.getX()][this.chip.getY()-1];
             canMove = this.chip.move(steppedTile.getWhatIsStepped(), 0, -1);
         } else { //s
-            steppedTile = this.tiles[this.chip.getY() + 1][this.chip.getX()];
+            steppedTile = this.tiles[this.chip.getX()][this.chip.getY()+1];
             canMove = this.chip.move(steppedTile.getWhatIsStepped(), 0, 1);
         }
 

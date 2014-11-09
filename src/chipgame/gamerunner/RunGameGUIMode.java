@@ -22,8 +22,8 @@ public class RunGameGUIMode extends JPanel {
 
     private final Board board = new Board();
     private final int tileSize;
-    private static int WINDOWSIZE_WIDTH = 485;
-    private static int WINDOWSIZE_HEIGHT = 500;
+    private static int WINDOWSIZE_WIDTH = 448;
+    private static int WINDOWSIZE_HEIGHT = 470;
    
     public RunGameGUIMode() {
         setFocusable(true);
@@ -68,12 +68,12 @@ public class RunGameGUIMode extends JPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         //Draw
-        for (int i = 0; i < this.board.getWidth(); i++) {
-            for (int j = 0; j < this.board.getLength(); j++) {
-                g2d.drawImage(this.board.getArrayOfTile()[i][j].getImage(),j*tileSize,i*tileSize,this);
+        for (int j = 0; j < 9; j++) {
+            for (int i = 0; i < 9; i++) {
+                g2d.drawImage(this.board.getArrayOfTile()[i+(this.board.getChip().getX()-4)][j+(this.board.getChip().getY()-4)].getImage(),i*tileSize,j*tileSize,this);
             }     
         }
-        g2d.drawImage(board.getChip().getImage(), board.getChip().getX() * tileSize, board.getChip().getY() * tileSize, this); 
+        g2d.drawImage(board.getChip().getImage(), 192, 192, this); 
         if (this.board.getCondition() != 0) {
             g2d.setColor(Color.BLACK);
             g2d.setFont(new Font("Arial", Font.BOLD, 48));
@@ -97,7 +97,7 @@ public class RunGameGUIMode extends JPanel {
         game.setTitle("Chip's Challenge");
         game.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         game.setSize(WINDOWSIZE_WIDTH, WINDOWSIZE_HEIGHT);
-        game.setResizable(false);
+ //       game.setResizable(false);
         game.add(new RunGameGUIMode());
 
         game.setLocationRelativeTo(null);

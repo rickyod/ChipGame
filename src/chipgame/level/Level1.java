@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package chipgame.level;
 
 import chipgame.tiles.*;
-import java.awt.Color;
 import java.awt.Point;
 
 /**
@@ -15,15 +13,15 @@ import java.awt.Point;
  * @author ASUS
  */
 public class Level1 extends Level {
-    
+
     public Level1() {
         this.initializeLevel();
     }
-    
+
     @Override
     public void initializeLevel() {
-        this.width = 10;
-        this.length = 10;
+        this.width = 19;
+        this.length = 22;
         this.ICRequired = 3;
         this.tiles = new Tile[width][length];
         for (int i = 0; i < width; i++) {
@@ -33,55 +31,78 @@ public class Level1 extends Level {
         }
         createMap();
     }
-    
+
     @Override
     protected void createMap() {
-        for (int i = 0; i < width; i++) { //wall kiri
-            this.tiles[i][0].addObject(this.wall);
+        //Upper Wall
+        for (int i = 3; i <= 6; i++) {
+            this.tiles[8][i].addObject(this.wall);
         }
-        for (int i = 0; i < width; i++) { //wall kanan
-            this.tiles[i][length - 1].addObject(this.wall);
+        this.tiles[9][3].addObject(this.wall);
+        for (int i = 3; i <= 6; i++) {
+            this.tiles[10][i].addObject(this.wall);
         }
-        for (int i = 0; i < length; i++) { //wall atas
-            this.tiles[0][i].addObject(this.wall);
+        this.tiles[6][7].addObject(this.wall);
+        this.tiles[7][6].addObject(this.wall);
+        this.tiles[7][7].addObject(this.wall);
+        this.tiles[11][6].addObject(this.wall);
+        this.tiles[11][7].addObject(this.wall);
+        this.tiles[12][7].addObject(this.wall);
+
+        //Left Wall
+        for (int i = 3; i <= 6; i++) {
+            this.tiles[i][8].addObject(this.wall);
         }
-        for (int i = 0; i < length; i++) { //wall atas
-            this.tiles[width - 1][i].addObject(this.wall);
-        }
-
-        this.tiles[1][4].addObject(this.IC);
-        this.tiles[2][8].addObject(this.IC);
-        this.tiles[8][2].addObject(this.IC);
-
-        this.tiles[8][5].addObject(this.greenKey);
-        this.tiles[8][6].addObject(this.greenDoor);
-        
-        this.tiles[1][3].addObject(new Fire());
-        this.tiles[2][3].addObject(new Fire());
-        this.tiles[2][4].addObject(new Fire());
-
-        this.tiles[2][7].addObject(new Fire());
-        this.tiles[3][7].addObject(new Fire());
-        this.tiles[3][8].addObject(new Fire());
-
-        this.tiles[7][2].addObject(new Fire());
-        this.tiles[6][3].addObject(new Fire());
-        this.tiles[7][3].addObject(new Fire());
-        this.tiles[8][3].addObject(new Fire());
-
-        for (int i = 3; i <= 7; i++) {
-            this.tiles[5][i].addObject(this.wall);
-        }
-        for (int i = 5; i <= 8; i++) {
-            this.tiles[7][i].addObject(this.wall);
+        this.tiles[3][9].addObject(this.wall);
+        for (int i = 3; i <= 6; i++) {
+            this.tiles[i][10].addObject(this.wall);
         }
 
-        this.tiles[8][7].addObject(this.barrier);
-        this.tiles[8][8].addObject(this.finish);
+        //Right Wall
+        for (int i = 12; i <= 15; i++) {
+            this.tiles[i][8].addObject(this.wall);
+        }
+        this.tiles[15][9].addObject(this.wall);
+        for (int i = 12; i <= 15; i++) {
+            this.tiles[i][10].addObject(this.wall);
+        }
+
+        //Lower Wall
+        for (int i = 12; i <= 18; i++) {
+            this.tiles[8][i].addObject(this.wall);
+        }
+        this.tiles[9][18].addObject(this.wall);
+        for (int i = 12; i <= 18; i++) {
+            this.tiles[10][i].addObject(this.wall);
+        }
+        this.tiles[6][11].addObject(this.wall);
+        this.tiles[7][11].addObject(this.wall);
+        this.tiles[7][12].addObject(this.wall);
+        this.tiles[11][11].addObject(this.wall);
+        this.tiles[11][12].addObject(this.wall);
+        this.tiles[12][11].addObject(this.wall);
+
+        //IC
+        this.tiles[9][4].addObject(this.IC);
+        this.tiles[13][9].addObject(this.IC);
+        this.tiles[14][9].addObject(this.IC);
+
+        //Key
+        this.tiles[4][9].addObject(this.greenKey);
+        this.tiles[5][9].addObject(this.blueKey);
+        this.tiles[6][9].addObject(this.redKey);
+
+        //Door
+        this.tiles[9][13].addObject(this.redDoor);
+        this.tiles[9][14].addObject(this.redDoor);
+        this.tiles[9][15].addObject(this.redDoor);
+        //Barrier And Finish
+        this.tiles[9][16].addObject(this.barrier);
+        this.tiles[9][17].addObject(new Finish());
     }
-    
+
     @Override
     public Point getInitialChipCoordinate() {
-        return new Point(1,1);   
+        return new Point(9, 9);
     }
 }
