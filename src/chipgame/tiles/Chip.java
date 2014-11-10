@@ -99,6 +99,7 @@ public class Chip implements Drawable {
      * @return true jika chip dapat bergerak
      */
     public boolean move(TileObject object, int moveX, int moveY) {
+        this.changeDirection(moveX, moveY);
         if (object != null && object.canBeStepped() == -1) { //jika objek tidak bisa diinjak
             return false;
         } else {
@@ -142,14 +143,13 @@ public class Chip implements Drawable {
             return true;
         }
     }
-
+    
     /**
-     * Method untuk menjalankan chip.
-     *
-     * @param moveX perubahan x
-     * @param moveY perubahan y
+     * Method untuk mengubah arah hadapan chip.
+     * @param moveX
+     * @param moveY 
      */
-    private void move(int moveX, int moveY) {
+    private void changeDirection(int moveX, int moveY) {
         if (moveX > 0) {
             this.image = right;
         } else if (moveX < 0) {
@@ -159,6 +159,15 @@ public class Chip implements Drawable {
         } else if (moveY < 0) {
             this.image = up;
         }
+    }
+
+    /**
+     * Method untuk menjalankan chip.
+     *
+     * @param moveX perubahan x
+     * @param moveY perubahan y
+     */
+    private void move(int moveX, int moveY) {
         this.x += moveX;
         this.y += moveY;
     }
