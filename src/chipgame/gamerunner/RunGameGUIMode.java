@@ -22,8 +22,8 @@ public class RunGameGUIMode extends JPanel {
 
     private final Board board = new Board();
     private final int tileSize;
-    private static int WINDOWSIZE_WIDTH = 448;
-    private static int WINDOWSIZE_HEIGHT = 470;
+    private static int WINDOWSIZE_WIDTH = 438;
+    private static int WINDOWSIZE_HEIGHT = 458;
    
     public RunGameGUIMode() {
         setFocusable(true);
@@ -97,7 +97,7 @@ public class RunGameGUIMode extends JPanel {
         game.setTitle("Chip's Challenge");
         game.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         game.setSize(WINDOWSIZE_WIDTH, WINDOWSIZE_HEIGHT);
- //       game.setResizable(false);
+        game.setResizable(false);
         game.add(new RunGameGUIMode());
 
         game.setLocationRelativeTo(null);

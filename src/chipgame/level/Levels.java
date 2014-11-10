@@ -96,7 +96,7 @@ public class Levels {
      * Method untuk mereset level sekarang.
      */
     public void resetLevel() {
-        this.currentLevel.initializeLevel();
+        this.currentLevel.createMap();
     }
     
 }

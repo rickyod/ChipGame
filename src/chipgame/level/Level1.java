@@ -10,7 +10,7 @@ import java.awt.Point;
 
 /**
  *
- * @author ASUS
+ * @author Riky Setiawan 2013730041
  */
 public class Level1 extends Level {
 
@@ -99,7 +99,7 @@ public class Level1 extends Level {
         //Barrier And Finish
         this.tiles[9][16].addObject(this.barrier);
         this.tiles[9][17].addObject(new Finish());
-    }
+        }
 
     @Override
     public Point getInitialChipCoordinate() {
