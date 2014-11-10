@@ -36,69 +36,69 @@ public class Level1 extends Level {
     protected void createMap() {
         //Upper Wall
         for (int i = 3; i <= 6; i++) {
-            this.tiles[8][i].addObject(this.wall);
+            this.tiles[8][i].setObject(this.wall);
         }
-        this.tiles[9][3].addObject(this.wall);
+        this.tiles[9][3].setObject(this.wall);
         for (int i = 3; i <= 6; i++) {
-            this.tiles[10][i].addObject(this.wall);
+            this.tiles[10][i].setObject(this.wall);
         }
-        this.tiles[6][7].addObject(this.wall);
-        this.tiles[7][6].addObject(this.wall);
-        this.tiles[7][7].addObject(this.wall);
-        this.tiles[11][6].addObject(this.wall);
-        this.tiles[11][7].addObject(this.wall);
-        this.tiles[12][7].addObject(this.wall);
+        this.tiles[6][7].setObject(this.wall);
+        this.tiles[7][6].setObject(this.wall);
+        this.tiles[7][7].setObject(this.wall);
+        this.tiles[11][6].setObject(this.wall);
+        this.tiles[11][7].setObject(this.wall);
+        this.tiles[12][7].setObject(this.wall);
 
         //Left Wall
         for (int i = 3; i <= 6; i++) {
-            this.tiles[i][8].addObject(this.wall);
+            this.tiles[i][8].setObject(this.wall);
         }
-        this.tiles[3][9].addObject(this.wall);
+        this.tiles[3][9].setObject(this.wall);
         for (int i = 3; i <= 6; i++) {
-            this.tiles[i][10].addObject(this.wall);
+            this.tiles[i][10].setObject(this.wall);
         }
 
         //Right Wall
         for (int i = 12; i <= 15; i++) {
-            this.tiles[i][8].addObject(this.wall);
+            this.tiles[i][8].setObject(this.wall);
         }
-        this.tiles[15][9].addObject(this.wall);
+        this.tiles[15][9].setObject(this.wall);
         for (int i = 12; i <= 15; i++) {
-            this.tiles[i][10].addObject(this.wall);
+            this.tiles[i][10].setObject(this.wall);
         }
 
         //Lower Wall
         for (int i = 12; i <= 18; i++) {
-            this.tiles[8][i].addObject(this.wall);
+            this.tiles[8][i].setObject(this.wall);
         }
-        this.tiles[9][18].addObject(this.wall);
+        this.tiles[9][18].setObject(this.wall);
         for (int i = 12; i <= 18; i++) {
-            this.tiles[10][i].addObject(this.wall);
+            this.tiles[10][i].setObject(this.wall);
         }
-        this.tiles[6][11].addObject(this.wall);
-        this.tiles[7][11].addObject(this.wall);
-        this.tiles[7][12].addObject(this.wall);
-        this.tiles[11][11].addObject(this.wall);
-        this.tiles[11][12].addObject(this.wall);
-        this.tiles[12][11].addObject(this.wall);
+        this.tiles[6][11].setObject(this.wall);
+        this.tiles[7][11].setObject(this.wall);
+        this.tiles[7][12].setObject(this.wall);
+        this.tiles[11][11].setObject(this.wall);
+        this.tiles[11][12].setObject(this.wall);
+        this.tiles[12][11].setObject(this.wall);
 
         //IC
-        this.tiles[9][4].addObject(this.IC);
-        this.tiles[13][9].addObject(this.IC);
-        this.tiles[14][9].addObject(this.IC);
+        this.tiles[9][4].setObject(this.IC);
+        this.tiles[13][9].setObject(this.IC);
+        this.tiles[14][9].setObject(this.IC);
 
         //Key
-        this.tiles[4][9].addObject(this.greenKey);
-        this.tiles[5][9].addObject(this.blueKey);
-        this.tiles[6][9].addObject(this.redKey);
+        this.tiles[4][9].setObject(this.greenKey);
+        this.tiles[5][9].setObject(this.blueKey);
+        this.tiles[6][9].setObject(this.redKey);
 
         //Door
-        this.tiles[9][13].addObject(this.redDoor);
-        this.tiles[9][14].addObject(this.blueDoor);
-        this.tiles[9][15].addObject(this.greenDoor);
+        this.tiles[9][13].setObject(this.redDoor);
+        this.tiles[9][14].setObject(this.blueDoor);
+        this.tiles[9][15].setObject(this.greenDoor);
         //Barrier And Finish
-        this.tiles[9][16].addObject(this.barrier);
-        this.tiles[9][17].addObject(new Finish());
+        this.tiles[9][16].setObject(this.barrier);
+        this.tiles[9][17].setObject(new Finish());
         }
 
     @Override

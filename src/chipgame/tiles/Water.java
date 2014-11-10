@@ -12,30 +12,31 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
- * Api sebagai objek yang dapat ditaruh di ubin yang tidak dapat diambil dan dapat diinjak. 
- * Jika diinjak, player akan mati dan permainan selesai.
- * @author Devi Handevi 2013730015
+ *
+ * @author Devi
  */
-public class Fire extends TileObject implements Conditional {
-    
+public class Water extends TileObject implements Conditional {
+
     /**
      * Attribute sebagai penunjuk gambar sekarang.
      */
     private int imageIterator;
     
     /**
-     * Constructor untuk membuat objek api.
+     * Constructor untuk membuat objek air.
      */
-    public Fire() {
-        this.image = new Image[6];
+    public Water() {
+        this.image = new Image[8];
         this.imageIterator = 0;
         try {
-            this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire1.png"));
-            this.image[1] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire2.png"));
-            this.image[2] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire3.png"));
-            this.image[3] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire4.png"));
-            this.image[4] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire5.png"));
-            this.image[5] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire6.png"));
+            this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water1.png"));
+            this.image[1] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water2.png"));
+            this.image[2] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water3.png"));
+            this.image[3] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water4.png"));
+            this.image[4] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water5.png"));
+            this.image[5] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water6.png"));
+            this.image[6] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water7.png"));
+            this.image[7] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water8.png"));
         } catch (IOException ex) {
             Logger.getLogger(Fire.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -61,26 +62,27 @@ public class Fire extends TileObject implements Conditional {
     
     /**
      * Method untuk mendapatkan gambar.
-     * @return gambar fire
+     * @return gambar air
      */
     @Override
     public Image getImage() {
         Image i = this.image[this.imageIterator];
-        this.imageIterator = (this.imageIterator+1)%6;
+        this.imageIterator = (this.imageIterator+1)%8;
         return i;
     }
-
+    
     /**
-     * Method untuk mengecek apakah chip memiliki sepatu khusus untuk dapat berjalan di api
+     * Method untuk mengecek apakah chip memiliki sepatu khusus untuk dapat berjalan di air
      * @param chip
      * @return true jika chip punya
      */
     @Override
     public boolean check(Chip chip) {
-        if(chip.hasShoes(Color.RED)) {
+        if(chip.hasShoes(Color.BLUE)) {
             return true;
         } else {
             return false;
         }
     }
 }
+

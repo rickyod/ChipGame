@@ -21,28 +21,28 @@ public class Door extends TileObject {
      * Atribut warna dari door
      */
     private Color color;
-    
-    public Door(Color color)
-    {
+
+    public Door(Color color) {
         this.image = new Image[1];
-        this.color=color;
+        this.color = color;
         try {
-            if(color.equals(Color.RED)) {
+            if (color.equals(Color.RED)) {
                 this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_red.png"));
-            } else if(color.equals(Color.GREEN)) {
+            } else if (color.equals(Color.GREEN)) {
                 this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_green.png"));
-            } else if(color.equals(Color.BLUE)) {
+            } else if (color.equals(Color.BLUE)) {
                 this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_blue.png"));
-            } else if(color.equals(Color.YELLOW)) {
+            } else if (color.equals(Color.YELLOW)) {
                 this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_yellow.png"));
-            } 
+            }
         } catch (IOException ex) {
             Logger.getLogger(Door.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Method untuk mengecek apakah objek ini dapat diinjak atau tidak.
+     *
      * @return 3, berarti bisa, namun perlu ada pengecekan
      */
     @Override
@@ -52,6 +52,7 @@ public class Door extends TileObject {
 
     /**
      * Method untuk mengecek apakah objek ini dapat diambil atau tidak.
+     *
      * @return true, berarti bisa
      */
     @Override
@@ -60,21 +61,24 @@ public class Door extends TileObject {
     }
 
     /**
-     * Method untuk mengecek apakah chip memiliki kunci dengan warna door yang sama.
+     * Method untuk mengecek apakah chip memiliki kunci dengan warna door yang
+     * sama.
+     *
      * @param chip player
-     * @return true, jika key yang dimiliki chip sama atau lebih dari key yang diperlukan
+     * @return true, jika key yang dimiliki chip sama atau lebih dari key yang
+     * diperlukan
      */
     public boolean openDoor(Chip chip) {
-        if(chip.getColoredKeyAcquired(this.color)>0)
-        {
+        if (chip.getColoredKeyAcquired(this.color) > 0) {
             chip.useKey(color);
             return true;
         }
         return false;
     }
-    
+
     /**
      * Method untuk mendapatkan gambar.
+     *
      * @return gambar door
      */
     @Override

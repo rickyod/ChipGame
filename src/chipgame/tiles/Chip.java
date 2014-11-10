@@ -46,6 +46,10 @@ public class Chip implements Drawable {
      */
     private int[] coloredKey;
     /**
+     * Attribute untuk sepatu milik chip. [0]Red, [1]Blue
+     */
+    private Shoes[] shoes;
+    /**
      * Attribute Image untuk gambar chip.
      */
     private Image image;
@@ -54,6 +58,8 @@ public class Chip implements Drawable {
     private Image left;
     private Image right;
     private Image burnt;
+    private Image drown;
+
     /**
      * Constructor untuk membuat objek dari chip.
      *
@@ -69,14 +75,16 @@ public class Chip implements Drawable {
         this.ICRequired = ICRequired;
         this.win = 0;
         this.coloredKey = new int[3];
-        
+        this.shoes = new Shoes[2];
+
         try {
             this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_down2.png"));
-            up = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_up2.png"));
-            down = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_down2.png"));
-            left = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_left2.png"));
-            right = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_right2.png"));
-            burnt = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_burnt.png"));
+            this.up = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_up2.png"));
+            this.down = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_down2.png"));
+            this.left = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_left2.png"));
+            this.right = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_right2.png"));
+            this.burnt = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_burnt.png"));
+            this.drown = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_drown.png"));
         } catch (IOException ex) {
             Logger.getLogger(Chip.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -99,23 +107,30 @@ public class Chip implements Drawable {
             } else {
                 if (object.canBeStepped() == 0) { //jika tidak bisa
                     this.move(moveX, moveY);
-                } else if (object.canBeStepped() == 1) { //bisa bergerak, tapi mati
+                } else if (object.canBeStepped() == 1) { //bisa bergerak, namun jika tidak ada sepatu khusus, chip mati
                     this.move(moveX, moveY);
-                    this.image = this.burnt;
-                    this.win = -1;
+                    if (object.getClass().equals(Fire.class)) { 
+                        if (!((Fire) object).check(this)) { //jika api dan tidak ada sepatu, terbakar
+                            this.image = this.burnt;
+                            this.win = -1;
+                        }
+                    } else if (object.getClass().equals(Water.class)) { //jika api dan tidak ada air, tenggelam
+                        if (!((Water) object).check(this)) {
+                            this.image = this.drown;
+                            this.win = -1;
+                        }
+                    }
                 } else if (object.canBeStepped() == 2) { //bisa bergerak, chip menang
                     this.move(moveX, moveY);
                     this.win = 1;
                 } else if (object.canBeStepped() == 3) { //bisa bergerak, dengan syarat tertentu
-                    if (object.getClass().equals(Barrier.class)) //jika barrier
-                    {
+                    if (object.getClass().equals(Barrier.class)) { //jika barrier
                         if (((Barrier) object).check(this)) {
                             this.move(moveX, moveY);
                         } else {
                             return false;
                         }
-                    } else //jika door
-                    {
+                    } else { //jika door
                         if (((Door) object).openDoor(this)) {
                             this.move(moveX, moveY);
                         } else {
@@ -135,6 +150,15 @@ public class Chip implements Drawable {
      * @param moveY perubahan y
      */
     private void move(int moveX, int moveY) {
+        if (moveX > 0) {
+            this.image = right;
+        } else if (moveX < 0) {
+            this.image = left;
+        } else if (moveY > 0) {
+            this.image = down;
+        } else if (moveY < 0) {
+            this.image = up;
+        }
         this.x += moveX;
         this.y += moveY;
     }
@@ -158,6 +182,13 @@ public class Chip implements Drawable {
                     this.coloredKey[1]++;
                 } else if (keyObj.getColor().equals(Color.BLUE)) {
                     this.coloredKey[2]++;
+                }
+            } else if (object.getClass().equals(Shoes.class)) {
+                Shoes shoesObj = (Shoes) object;
+                if (shoesObj.getColor().equals(Color.RED)) {
+                    this.shoes[0] = shoesObj;
+                } else if (shoesObj.getColor().equals(Color.BLUE)) {
+                    this.shoes[1] = shoesObj;
                 }
             }
         }
@@ -187,19 +218,29 @@ public class Chip implements Drawable {
      * @return jumlah key yang dimiliki
      */
     public int getColoredKeyAcquired(Color color) {
-        if(color.equals(Color.RED))
-        {
+        if (color.equals(Color.RED)) {
             return this.coloredKey[0];
-        }
-        else if(color.equals(Color.GREEN))
-        {
+        } else if (color.equals(Color.GREEN)) {
             return this.coloredKey[1];
-        }
-        else if(color.equals(Color.BLUE))
-        {
+        } else if (color.equals(Color.BLUE)) {
             return this.coloredKey[2];
         }
         return 0;
+    }
+
+    /**
+     * Method untuk memeriksa apakah chip memiliki sepatu dengan warna tertentu.
+     *
+     * @param color warna
+     * @return true jika ada
+     */
+    public boolean hasShoes(Color color) {
+        if (color.equals(Color.RED)) {
+            return !(this.shoes[0] == null);
+        } else if (color.equals(Color.BLUE)) {
+            return !(this.shoes[1] == null);
+        }
+        return false;
     }
 
     /**
@@ -208,16 +249,11 @@ public class Chip implements Drawable {
      * @return jumlah key yang diperlukan
      */
     public void useKey(Color color) {
-        if(color.equals(Color.RED))
-        {
+        if (color.equals(Color.RED)) {
             this.coloredKey[0]--;
-        }
-        else if(color.equals(Color.GREEN))
-        {
+        } else if (color.equals(Color.GREEN)) {
             this.coloredKey[1]--;
-        }
-        else if(color.equals(Color.BLUE))
-        {
+        } else if (color.equals(Color.BLUE)) {
             this.coloredKey[2]--;
         }
     }
@@ -249,17 +285,17 @@ public class Chip implements Drawable {
     public int getCondition() {
         return this.win;
     }
-    
+
     /**
      * Method untuk mengembalikan kondisi chip untuk melanjutkan permainan.
      */
-    public void setDefaultCondition()
-    {
-        this.win=0;
+    public void setDefaultCondition() {
+        this.win = 0;
     }
 
     /**
      * Method untuk mendapatkan gambar.
+     *
      * @return gambar chip
      */
     @Override

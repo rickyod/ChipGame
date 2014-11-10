@@ -34,57 +34,57 @@ public abstract class Level {
     
     //Objek - objek chipgame.tiles
     /**
-     * Attribute objek barrier dari kelas
+     * Attribute barrier.
      */
     protected Barrier barrier;
     /**
-     * Attribute objek dari kelas
+     * Attribute pintu merah.
      */
     protected Door redDoor;
     /**
-     * Attribute objek dari kelas
+     * Attribute pintu hijau.
      */
     protected Door greenDoor;
     /**
-     * Attribute objek dari kelas
+     * Attribute pintu biru.
      */
     protected Door blueDoor;
     /**
-     * Attribute objek dari kelas
+     * Attribute pintu kuning.
      */
     protected Door yellowDoor;
     /**
-     * Attribute objek dari kelas
+     * Attribute kunci merah.
      */
     protected Key redKey;
     /**
-     * Attribute objek dari kelas
+     * Attribute kunci hijau.
      */
     protected Key greenKey;
     /**
-     * Attribute objek dari kelas
+     * Attribute kunci biru.
      */
     protected Key blueKey;
     /**
-     * Attribute objek dari kelas
+     * Attribute kunci kuning.
      */
     protected Key yellowKey;
     /**
-     * Attribute objek dari kelas
-     */
-    protected Finish finish = new Finish();
-    /**
-     * Attribute objek dari kelas
-     */
-    protected Fire fire;
-    /**
-     * Attribute objek dari kelas
+     * Attribute IC.
      */
     protected IntegratedCircuit IC;
     /**
-     * Attribute objek dari kelas
+     * Attribute dinding.
      */
     protected Wall wall;
+    /**
+     * Attribute sepatu merah.
+     */
+    protected Shoes redShoes;
+    /**
+     * Attribute sepatu biru.
+     */
+    protected Shoes blueShoes;
     
     public Level() {
         this.barrier = new Barrier();
@@ -96,10 +96,10 @@ public abstract class Level {
         this.greenKey = new Key(Color.green);
         this.blueKey = new Key(Color.blue);
         this.yellowKey = new Key(Color.yellow);
-        this.finish = new Finish();
-        this.fire = new Fire();
         this.IC = new IntegratedCircuit();
         this.wall = new Wall();
+        this.redShoes = new Shoes(Color.red);
+        this.blueShoes = new Shoes(Color.blue);
     }
     
     /**

@@ -70,7 +70,7 @@ public class Tile implements Drawable {
      * Method untuk menaruh objek di ubin.
      * @param object objek yang ingin ditaruh
      */
-    public void addObject(TileObject object) {
+    public void setObject(TileObject object) {
         this.object = object;
     }
 

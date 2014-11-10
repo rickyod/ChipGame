@@ -11,7 +11,9 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
- * Gerbang sebagai objek yang dapat di taruh di ubin yang dapat diambil dan dapat diinjak jika player memiliki IC yang cukup.
+ * Gerbang sebagai objek yang dapat di taruh di ubin yang dapat diambil dan
+ * dapat diinjak jika player memiliki IC yang cukup.
+ *
  * @author Devi Handevi 2013730015
  */
 public class Barrier extends TileObject implements Conditional {
@@ -24,9 +26,10 @@ public class Barrier extends TileObject implements Conditional {
             Logger.getLogger(Barrier.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Method untuk mengecek apakah objek ini dapat diinjak atau tidak.
+     *
      * @return 3, berarti bisa, namun perlu ada pengecekan
      */
     @Override
@@ -36,6 +39,7 @@ public class Barrier extends TileObject implements Conditional {
 
     /**
      * Method untuk mengecek apakah objek ini dapat diambil atau tidak.
+     *
      * @return true, berarti bisa
      */
     @Override
@@ -45,22 +49,27 @@ public class Barrier extends TileObject implements Conditional {
 
     /**
      * Method untuk mengecek apakah persyaratan sudah terpenuhi atau belum.
+     *
      * @param chip player
-     * @return true, jika IC yang dimiliki chip sama atau lebih dari IC yang diperlukan
+     * @return true, jika IC yang dimiliki chip sama atau lebih dari IC yang
+     * diperlukan
      */
     @Override
     public boolean check(Chip chip) {
-        if(chip.getICAcquired()>=chip.getICRequired()) { return true; }
-        else { return false; }
+        if (chip.getICAcquired() >= chip.getICRequired()) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    
+
     /**
      * Method untuk mendapatkan gambar.
+     *
      * @return gambar barrier
      */
     @Override
     public Image getImage() {
         return this.image[0];
     }
-    
 }

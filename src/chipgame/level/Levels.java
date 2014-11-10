@@ -35,6 +35,7 @@ public class Levels {
         this.listLevel = new LinkedList<Level>();
         this.listLevel.add(new Level1());
         this.listLevel.add(new Level2());
+        this.listLevel.add(new Level3());
         this.li = this.listLevel.listIterator();
         this.currentLevel = (Level)this.li.next();
     }

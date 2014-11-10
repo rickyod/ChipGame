@@ -13,9 +13,9 @@ import java.awt.Point;
  *
  * @author Riky Setiawan 2013730041
  */
-public class Level2 extends Level {
+public class Level3 extends Level {
 
-    public Level2() {
+    public Level3() {
         this.initializeLevel();
     }
 
@@ -102,13 +102,13 @@ public class Level2 extends Level {
         this.tiles[9][17].setObject(new Finish());
         
         //Chip in 9,9
-        this.tiles[9][8].setObject(new Fire());
-        this.tiles[8][9].setObject(new Fire());
+        this.tiles[9][8].setObject(new Water());
+        this.tiles[8][9].setObject(new Water());
+        this.tiles[9][10].setObject(new Water());
         this.tiles[8][8].setObject(new Fire());
-        this.tiles[9][10].setObject(new Fire());
         
         //Sepatu
-        this.tiles[10][9].setObject(this.redShoes);
+        this.tiles[10][9].setObject(this.blueShoes);
     }
 
     @Override
