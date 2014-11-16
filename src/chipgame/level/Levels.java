@@ -10,7 +10,9 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 /**
- *
+ * Kelas Levels mengatur jalannya level dan memiliki list dari semua level.
+ * 
+ * @author Riky Setiawan 2013730041
  * @author Devi Handevi 2013730015
  */
 public class Levels {
@@ -100,4 +102,12 @@ public class Levels {
         this.currentLevel.createMap();
     }
     
+    /**
+     * Method untuk mengecek apakah current level sudah level terakhir.
+     * @return 
+     */
+    public boolean endLevel()
+    {
+        return this.currentLevel==this.listLevel.getLast();
+    }
 }

@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
 public class Key extends TileObject {
 
     /**
-     * Atribut warna dari key (Red , Green , Blue)
+     * Atribut warna dari key (Red , Green , Blue , Yellow)
      */
     private Color color;
 

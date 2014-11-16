@@ -10,8 +10,10 @@ import chipgame.tiles.*;
 import java.awt.Point;
 
 /**
- *
+ * Kelas level 3.
+ * 
  * @author Riky Setiawan 2013730041
+ * @author Devi Handevi 2013730015
  */
 public class Level3 extends Level {
 
@@ -92,8 +94,10 @@ public class Level3 extends Level {
         this.tiles[4][9].setObject(this.greenKey);
         this.tiles[5][9].setObject(this.blueKey);
         this.tiles[6][9].setObject(this.redKey);
+        this.tiles[9][5].setObject(this.yellowKey);
 
         //Door
+        this.tiles[9][12].setObject(this.yellowDoor);
         this.tiles[9][13].setObject(this.redDoor);
         this.tiles[9][14].setObject(this.blueDoor);
         this.tiles[9][15].setObject(this.greenDoor);

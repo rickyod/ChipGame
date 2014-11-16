@@ -11,8 +11,10 @@ import java.awt.Color;
 import java.awt.Point;
 
 /**
- *
- * @author ASUS
+ * Kelas abstract Level , sebagai template dari sebuah level.
+ * 
+ * @author Riky Setiawan 2013730041
+ * @author Devi Handevi 2013730015
  */
 public abstract class Level {
     /**

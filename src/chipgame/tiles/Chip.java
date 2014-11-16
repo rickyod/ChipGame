@@ -42,7 +42,8 @@ public class Chip implements Drawable {
      */
     private final int ICRequired;
     /**
-     * Attribute array dari kumpulan key berwarna. [0]Red,[1]Green,[2]Blue
+     * Attribute array dari kumpulan key berwarna.
+     * [0]Red,[1]Green,[2]Blue,[3]Yellow
      */
     private int[] coloredKey;
     /**
@@ -66,7 +67,6 @@ public class Chip implements Drawable {
      * @param x posisi absis awal chip
      * @param y posisi ordinat awal chip
      * @param ICRequired jumlah IC yang dibutuhkan
-     * @param keyRequired jumlah key yang dibutuhkan
      */
     public Chip(int x, int y, int ICRequired) {
         this.x = x;
@@ -74,7 +74,7 @@ public class Chip implements Drawable {
         this.ICAcquired = 0;
         this.ICRequired = ICRequired;
         this.win = 0;
-        this.coloredKey = new int[3];
+        this.coloredKey = new int[4];
         this.shoes = new Shoes[2];
 
         try {
@@ -110,12 +110,12 @@ public class Chip implements Drawable {
                     this.move(moveX, moveY);
                 } else if (object.canBeStepped() == 1) { //bisa bergerak, namun jika tidak ada sepatu khusus, chip mati
                     this.move(moveX, moveY);
-                    if (object.getClass().equals(Fire.class)) { 
+                    if (object.getClass().equals(Fire.class)) {
                         if (!((Fire) object).check(this)) { //jika api dan tidak ada sepatu, terbakar
                             this.image = this.burnt;
                             this.win = -1;
                         }
-                    } else if (object.getClass().equals(Water.class)) { //jika api dan tidak ada air, tenggelam
+                    } else if (object.getClass().equals(Water.class)) { //jika air dan tidak ada sepatu, tenggelam
                         if (!((Water) object).check(this)) {
                             this.image = this.drown;
                             this.win = -1;
@@ -143,11 +143,12 @@ public class Chip implements Drawable {
             return true;
         }
     }
-    
+
     /**
      * Method untuk mengubah arah hadapan chip.
+     *
      * @param moveX
-     * @param moveY 
+     * @param moveY
      */
     private void changeDirection(int moveX, int moveY) {
         if (moveX > 0) {
@@ -179,7 +180,7 @@ public class Chip implements Drawable {
      *
      * @param object objek yang diambil di tile
      */
-    public void takeObject(TileObject object) {
+    public TileObject takeObject(TileObject object) {
         if (object != null) {
             if (object.getClass().equals(IntegratedCircuit.class)) {
                 this.ICAcquired++;
@@ -191,6 +192,8 @@ public class Chip implements Drawable {
                     this.coloredKey[1]++;
                 } else if (keyObj.getColor().equals(Color.BLUE)) {
                     this.coloredKey[2]++;
+                } else {
+                    this.coloredKey[3]++; //Yellow Key
                 }
             } else if (object.getClass().equals(Shoes.class)) {
                 Shoes shoesObj = (Shoes) object;
@@ -201,6 +204,7 @@ public class Chip implements Drawable {
                 }
             }
         }
+        return object;
     }
 
     /**
@@ -224,6 +228,7 @@ public class Chip implements Drawable {
     /**
      * Method untuk mendapatkan key yang dimiliki chip.
      *
+     * @param color Color dari key
      * @return jumlah key yang dimiliki
      */
     public int getColoredKeyAcquired(Color color) {
@@ -233,6 +238,8 @@ public class Chip implements Drawable {
             return this.coloredKey[1];
         } else if (color.equals(Color.BLUE)) {
             return this.coloredKey[2];
+        } else if (color.equals(Color.YELLOW)) {
+            return this.coloredKey[3];
         }
         return 0;
     }
@@ -264,6 +271,8 @@ public class Chip implements Drawable {
             this.coloredKey[1]--;
         } else if (color.equals(Color.BLUE)) {
             this.coloredKey[2]--;
+        } else if (color.equals(Color.YELLOW)) {
+            this.coloredKey[3]--;
         }
     }
 

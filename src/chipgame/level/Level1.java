@@ -9,8 +9,10 @@ import chipgame.tiles.*;
 import java.awt.Point;
 
 /**
- *
+ * Kelas level 1.
+ * 
  * @author Riky Setiawan 2013730041
+ * @author Devi Handevi 2013730015
  */
 public class Level1 extends Level {
 
