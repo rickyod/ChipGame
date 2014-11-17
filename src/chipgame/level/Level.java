@@ -80,6 +80,10 @@ public abstract class Level {
      */
     protected Wall wall;
     /**
+     * Attribute finish.
+     */
+    protected Finish finish;
+    /**
      * Attribute sepatu merah.
      */
     protected Shoes redShoes;
@@ -89,19 +93,10 @@ public abstract class Level {
     protected Shoes blueShoes;
     
     public Level() {
-        this.barrier = new Barrier();
-        this.redDoor = new Door(Color.red);
-        this.greenDoor = new Door(Color.green);
-        this.blueDoor = new Door(Color.blue);
-        this.yellowDoor = new Door(Color.yellow);
-        this.redKey = new Key(Color.red);
-        this.greenKey = new Key(Color.green);
-        this.blueKey = new Key(Color.blue);
-        this.yellowKey = new Key(Color.yellow);
-        this.IC = new IntegratedCircuit();
         this.wall = new Wall();
-        this.redShoes = new Shoes(Color.red);
-        this.blueShoes = new Shoes(Color.blue);
+        this.barrier = new Barrier();
+        this.IC = new IntegratedCircuit();
+        this.finish = new Finish();
     }
     
     /**
@@ -150,4 +145,9 @@ public abstract class Level {
      * Method untuk menginisialisasi level.
      */
     public abstract void initializeLevel();
+    
+    /**
+     * Method untuk men-load attribute-attribute yang diperlukan pada level.
+     */
+    protected abstract void loadAttributesNeeded();
 }
