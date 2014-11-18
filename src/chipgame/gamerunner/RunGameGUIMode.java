@@ -21,11 +21,26 @@ import javax.swing.JPanel;
  */
 public class RunGameGUIMode extends JPanel {
 
+    /**
+     * Attribute papan permainan.
+     */
     private final Board board = new Board();
+    /**
+     * Attribute besar ubin.
+     */
     private final int tileSize;
-    private static int WINDOWSIZE_WIDTH = 648;
-    private static int WINDOWSIZE_HEIGHT = 480;
+    /**
+     * Attribute lebar window permainan dengan papan yang tidak utuh.
+     */
+    private static final int WINDOWSIZE_WIDTH = 648;
+    /**
+     * Attribute panjang window permainan dengan papan yang tidak utuh.
+     */
+    private static final int WINDOWSIZE_HEIGHT = 480;
 
+    /**
+     * Constructor untuk permainan chip.
+     */
     public RunGameGUIMode() {
         setBackground(Color.black);
         setFocusable(true);
@@ -34,6 +49,9 @@ public class RunGameGUIMode extends JPanel {
         this.tileSize = 48;
     }
 
+    /**
+     * Kelas listener khusus untuk GUI permainan.
+     */
     private class KeyListener extends KeyAdapter {
 
         /**
@@ -52,7 +70,7 @@ public class RunGameGUIMode extends JPanel {
                 } else if (evt.getKeyCode() == KeyEvent.VK_UP || evt.getKeyCode() == KeyEvent.VK_W) {
                     board.move("w");
                 }
-            } else if (board.getCondition() == 1&&!board.endGame()) {
+            } else if (board.getCondition() == 1){//&&!board.endGame()) {
                 if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
                     board.getNextLevel();
                 }
@@ -65,51 +83,61 @@ public class RunGameGUIMode extends JPanel {
         }
     }
 
+    /**
+     * Method untuk menggambar kondisi papan dan lainnya.
+     * @param g 
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
+        
         //Draw Map
+        int pointerX = this.board.getChip().getX() - 4;
+        int pointerY = this.board.getChip().getY() - 4;
         for (int j = 0; j < 9; j++) {
             for (int i = 0; i < 9; i++) {
-                g2d.drawImage(this.board.getArrayOfTile()[i + (this.board.getChip().getX() - 4)][j + (this.board.getChip().getY() - 4)].getImage(), i * tileSize, j * tileSize, this);
+                g2d.drawImage(this.board.getArrayOfTile()[i + pointerX][j + pointerY].getImage(), i * tileSize, j * tileSize, this);
             }
         }
+        
         //Draw Chip
         g2d.drawImage(board.getChip().getImage(), 192, 192, this);
+        
         //Draw Info
         g2d.setColor(Color.white);
         g2d.setFont(new Font("Calibri", Font.BOLD, 15));
         g2d.drawString("Level "+this.board.getIndexLevel(), 440, 40);
         g2d.drawString("Chips left  : "+(this.board.getChip().getICRequired()-this.board.getChip().getICAcquired()), 440, 60);
+        
         //Draw Inventory
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 2; j++) {
                 g2d.drawImage(this.board.getArrayOfInventory()[i][j].getImage(), i * tileSize + 440, j * tileSize + 100, this);
             }
         }
+        
+        //Draw Another Info
         if (this.board.getCondition() != 0) {
-            if (this.board.endGame()) {
-                g2d.setColor(Color.BLACK);
-                g2d.setFont(new Font("Arial", Font.BOLD, 48));
-                if (this.board.getCondition() == 1) {
-                    g2d.drawString("YOU WIN!", 96, 240);
-                } else { // == -1
-                    g2d.drawString("YOU LOSE!", 96, 240);
-                }
-            } else {
-                g2d.setColor(Color.white);
+            g2d.setColor(Color.WHITE);
+            if (this.board.getCondition() == 1) {
+                g2d.setFont(new Font("Arial", Font.BOLD, 37));
+                g2d.drawString("YOU WIN!", 450, 300);
                 g2d.setFont(new Font("Arial", Font.BOLD, 11));
                 g2d.drawString("PRESS SPACE TO CONTINUE", 144, 442);
+            } else { // == -1
+                g2d.setFont(new Font("Arial", Font.BOLD, 11));
+                g2d.drawString("PRESS SPACE TO RESTART THIS LEVEL", 114, 442);
             }
         }
 
+        //sleep agar animasi tidak terlalu cepat
         try {
             Thread.sleep(45);
         } catch (InterruptedException ex) {
             Logger.getLogger(RunGameGUIMode.class.getName()).log(Level.SEVERE, null, ex);
         }
-        repaint();
+        repaint(); //pemanggilan method ini lagi
     }
 
     public static void main(String[] args) {

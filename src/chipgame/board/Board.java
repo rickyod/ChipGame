@@ -21,14 +21,6 @@ public class Board {
      */
     private Tile[][] tiles;
     /**
-     * Attribute untuk menyimpan tinggi papan permainan.
-     */
-    private int width;
-    /**
-     * Attribute untuk menyimpan lebar papan permainan.
-     */
-    private int length;
-    /**
      * Attribute untuk menyimpan chip, sebagai pemain.
      */
     private Chip chip;
@@ -51,7 +43,7 @@ public class Board {
     private int levelIndex;
 
     /**
-     * Constructor default untuk men-set papan permainan.
+     * Constructor untuk men-set papan permainan dan level.
      */
     public Board() {
         this.inventory = new Tile[4][2];
@@ -81,24 +73,6 @@ public class Board {
      */
     public Tile[][] getArrayOfInventory() {
         return this.inventory;
-    }
-
-    /**
-     * Method untuk mendapatkan panjang board.
-     *
-     * @return
-     */
-    public int getLength() {
-        return this.length;
-    }
-
-    /**
-     * Method untuk mendapatkan lebar board.
-     *
-     * @return
-     */
-    public int getWidth() {
-        return this.width;
     }
 
     /**
@@ -180,16 +154,14 @@ public class Board {
     public void getNextLevel() {
         if (this.level.goToTheNextLevel()) {
             this.set();
+            this.levelIndex++;
         }
-        this.levelIndex++;
     }
 
     /**
      * Method untuk menginisialisasi attribute.
      */
     public void set() {
-        this.width = level.getWidth();
-        this.length = level.getLength();
         this.ICRequired = this.level.getICRequired();
         this.chip = new Chip(this.level.getInitialChipCoordinate().x, this.level.getInitialChipCoordinate().y, this.ICRequired);
         this.tiles = this.level.getMap();
@@ -199,15 +171,6 @@ public class Board {
     public void reset() {
         this.level.resetLevel();
         this.set();
-    }
-
-    /**
-     * Attribut untuk mengecek apakah game sudah berakhir
-     *
-     * @return boolean
-     */
-    public boolean endGame() {
-        return this.getCondition() == 1 && this.level.endLevel();
     }
 
     /**

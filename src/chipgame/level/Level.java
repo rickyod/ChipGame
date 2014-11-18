@@ -7,7 +7,6 @@
 package chipgame.level;
 
 import chipgame.tiles.*;
-import java.awt.Color;
 import java.awt.Point;
 
 /**
@@ -113,22 +112,6 @@ public abstract class Level {
      */
     public int getICRequired() {
         return this.ICRequired;
-    }
-    
-    /**
-     * Method untuk mendapatkan lebar map.
-     * @return int jumlah IC
-     */
-    public int getWidth() {
-        return this.width;
-    }
-    
-    /**
-     * Method untuk mendapatkan panjang map.
-     * @return int jumlah IC
-     */
-    public int getLength() {
-        return this.length;
     }
             
     /**

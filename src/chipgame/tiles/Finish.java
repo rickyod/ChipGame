@@ -15,9 +15,15 @@ import javax.imageio.ImageIO;
  * @author Devi Handevi 2013730015
  */
 public class Finish extends TileObject {
-
+    
+    /**
+     * Attribute sebagai penunjuk gambar sekarang.
+     */
     private int imageIterator;
     
+    /**
+     * Constructor untuk membuat objek finish.
+     */
     public Finish() {
         this.image = new Image[4];
         this.imageIterator = 0;

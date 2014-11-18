@@ -51,22 +51,6 @@ public class Levels {
     }
     
     /**
-     * Method untuk mendapatkan lebar map level yang sekarang.
-     * @return lebar map
-     */
-    public int getWidth() {
-        return this.currentLevel.getWidth();
-    }
-    
-    /**
-     * Method untuk mendapatkan panjang map level yang sekarang.
-     * @return panjang map
-     */
-    public int getLength() {
-        return this.currentLevel.getLength();
-    }
-    
-    /**
      * Method untuk mendapatkan map untuk level yang sekarang.
      * @return map
      */
@@ -100,14 +84,5 @@ public class Levels {
      */
     public void resetLevel() {
         this.currentLevel.createMap();
-    }
-    
-    /**
-     * Method untuk mengecek apakah current level sudah level terakhir.
-     * @return 
-     */
-    public boolean endLevel()
-    {
-        return this.currentLevel==this.listLevel.getLast();
     }
 }

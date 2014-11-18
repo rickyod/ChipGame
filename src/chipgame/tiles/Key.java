@@ -22,6 +22,10 @@ public class Key extends TileObject {
      */
     private Color color;
 
+    /**
+     * Constructor untuk membuat objek kunci dengan warna tertentu.
+     * @param color warna
+     */
     public Key(Color color) {
         this.image = new Image[1];
         this.color = color;

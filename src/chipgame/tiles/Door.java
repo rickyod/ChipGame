@@ -22,6 +22,10 @@ public class Door extends TileObject {
      */
     private Color color;
 
+    /**
+     * Constructor untuk membuat pintu dengan warna tertentu.
+     * @param color warna
+     */
     public Door(Color color) {
         this.image = new Image[1];
         this.color = color;
@@ -69,8 +73,7 @@ public class Door extends TileObject {
      * diperlukan
      */
     public boolean openDoor(Chip chip) {
-        if (chip.getColoredKeyAcquired(this.color) > 0) {
-            chip.useKey(color);
+        if (chip.hasColoredKey(this.color)) {
             return true;
         }
         return false;

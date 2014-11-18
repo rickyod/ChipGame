@@ -4,7 +4,6 @@
  */
 package chipgame.tiles;
 
-//import java.util.LinkedList;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.IOException;
@@ -45,7 +44,7 @@ public class Chip implements Drawable {
      * Attribute array dari kumpulan key berwarna.
      * [0]Red,[1]Green,[2]Blue,[3]Yellow
      */
-    private int[] coloredKey;
+    private boolean[] coloredKey;
     /**
      * Attribute untuk sepatu milik chip. [0]Red, [1]Blue
      */
@@ -54,12 +53,12 @@ public class Chip implements Drawable {
      * Attribute Image untuk gambar chip.
      */
     private Image image;
-    private Image up;
-    private Image down;
-    private Image left;
-    private Image right;
-    private Image burnt;
-    private Image drown;
+    private Image up; //chip menghadap ke atas
+    private Image down; //chip menghadap ke bawah
+    private Image left; //chip menghadap ke kiri
+    private Image right; //chip menghadap ke kanan
+    private Image burnt; //chip terbakar
+    private Image drown; //chip tercebur
 
     /**
      * Constructor untuk membuat objek dari chip.
@@ -74,7 +73,7 @@ public class Chip implements Drawable {
         this.ICAcquired = 0;
         this.ICRequired = ICRequired;
         this.win = 0;
-        this.coloredKey = new int[4];
+        this.coloredKey = new boolean[4];
         this.shoes = new Shoes[2];
 
         try {
@@ -187,13 +186,13 @@ public class Chip implements Drawable {
             } else if (object.getClass().equals(Key.class)) {
                 Key keyObj = (Key) object;
                 if (keyObj.getColor().equals(Color.RED)) {
-                    this.coloredKey[0]++;
+                    this.coloredKey[0] = true;
                 } else if (keyObj.getColor().equals(Color.GREEN)) {
-                    this.coloredKey[1]++;
+                    this.coloredKey[1] = true;
                 } else if (keyObj.getColor().equals(Color.BLUE)) {
-                    this.coloredKey[2]++;
-                } else {
-                    this.coloredKey[3]++; //Yellow Key
+                    this.coloredKey[2] = true;
+                } else { //YELLOW
+                    this.coloredKey[3] = true; 
                 }
             } else if (object.getClass().equals(Shoes.class)) {
                 Shoes shoesObj = (Shoes) object;
@@ -231,7 +230,7 @@ public class Chip implements Drawable {
      * @param color Color dari key
      * @return jumlah key yang dimiliki
      */
-    public int getColoredKeyAcquired(Color color) {
+    public boolean hasColoredKey(Color color) {
         if (color.equals(Color.RED)) {
             return this.coloredKey[0];
         } else if (color.equals(Color.GREEN)) {
@@ -241,7 +240,7 @@ public class Chip implements Drawable {
         } else if (color.equals(Color.YELLOW)) {
             return this.coloredKey[3];
         }
-        return 0;
+        return false;
     }
 
     /**
@@ -257,23 +256,6 @@ public class Chip implements Drawable {
             return !(this.shoes[1] == null);
         }
         return false;
-    }
-
-    /**
-     * Method untuk mendapatkan key yang diperlukan.
-     *
-     * @return jumlah key yang diperlukan
-     */
-    public void useKey(Color color) {
-        if (color.equals(Color.RED)) {
-            this.coloredKey[0]--;
-        } else if (color.equals(Color.GREEN)) {
-            this.coloredKey[1]--;
-        } else if (color.equals(Color.BLUE)) {
-            this.coloredKey[2]--;
-        } else if (color.equals(Color.YELLOW)) {
-            this.coloredKey[3]--;
-        }
     }
 
     /**

@@ -17,6 +17,9 @@ import javax.imageio.ImageIO;
  */
 public class IntegratedCircuit extends TileObject {
 
+    /**
+     * Constructor untuk membuat objek IC.
+     */
     public IntegratedCircuit() {
         this.image = new Image[1];
         try {

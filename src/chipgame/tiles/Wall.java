@@ -17,6 +17,9 @@ import javax.imageio.ImageIO;
  */
 public class Wall extends TileObject {
 
+    /**
+     * Constructor untuk membuat dinding.
+     */
     public Wall() {
         this.image = new Image[1];
         try {

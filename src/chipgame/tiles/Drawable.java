@@ -11,5 +11,10 @@ import java.awt.Image;
  * @author Devi Handevi 2013730015
  */
 public interface Drawable {
+    
+    /**
+     * Method untuk mendapatkan gambar.
+     * @return gambar
+     */
     public Image getImage();
 }

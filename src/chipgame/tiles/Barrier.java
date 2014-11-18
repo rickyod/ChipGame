@@ -18,6 +18,9 @@ import javax.imageio.ImageIO;
  */
 public class Barrier extends TileObject implements Conditional {
 
+    /**
+     * Constructor untuk membuat penghalang sebelum masuk finish, mengecek banyak IC sebelum dapat dilewati.
+     */
     public Barrier() {
         this.image = new Image[1];
         try {
