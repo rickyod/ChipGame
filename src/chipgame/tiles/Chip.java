@@ -177,7 +177,8 @@ public class Chip implements Drawable {
      * penting untuk pengguna, maka objek tersebut tidak akan dianggap,
      * contohnya pintu.
      *
-     * @param object objek yang diambil di tile
+     * @param object objek yang akan diambil di tile
+     * @return object objek yang diambil di tile
      */
     public TileObject takeObject(TileObject object) {
         if (object != null) {

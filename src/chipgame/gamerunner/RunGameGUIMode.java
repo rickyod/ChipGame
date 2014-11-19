@@ -15,7 +15,7 @@ import javax.swing.*;
 import javax.swing.JPanel;
 
 /**
- *
+ * Kelas yang mempunyai objek board sebagai papan permainan dan mengatur Graphic User Interface(GUI) dari permainan.
  * @author Riky Setiawan 2013730041
  * @author Devi Handevi 2013730015
  */

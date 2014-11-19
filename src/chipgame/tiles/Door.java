@@ -12,8 +12,11 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
- *
- * @author Devi
+ * Door sebagai objek yang dapat di taruh di ubin yang dapat diambil dan dapat diinjak dengan kondisi tertentu.
+ * Door akan bisa dibuka dengan objek Key yang memiliki warna yang sama dengan door.
+ * Contoh , bila door berwarna merah akan terbuka bila memiliki key berwarna merah juga.
+ * 
+ * @author Devi Handevi 2013730015
  */
 public class Door extends TileObject {
 

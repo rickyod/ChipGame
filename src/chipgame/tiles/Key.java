@@ -12,8 +12,11 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
- *
- * @author Devi
+ * Key sebagai objek yang dapat di taruh di ubin yang dapat diambil dan dapat diinjak. Menginjak sama dengan mengambil.
+ * Jika mendapatkan key , bisa membuka door sesuai dengan warna dari key.
+ * Contoh , bila key berwarna merah akan membuka door berwarna merah.
+ * 
+ * @author Devi Handevi 2013730015
  */
 public class Key extends TileObject {
 

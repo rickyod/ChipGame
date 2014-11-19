@@ -12,8 +12,12 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
- *
- * @author Devi
+ * Shoes sebagai objek yang dapat di taruh di ubin yang dapat diambil dan dapat diinjak. Menginjak sama dengan mengambil.
+ * Jika mendapatkan shoes , akan kebal terhadap elemen tergantung dengan warna dari shoes.
+ * Jika shoes berwarna merah akan kebal terhadap api.
+ * Jika shoes berwarna biru akan kebal terhadap air.
+ * 
+ * @author Devi Handevi 2013730015
  */
 public class Shoes extends TileObject {
     

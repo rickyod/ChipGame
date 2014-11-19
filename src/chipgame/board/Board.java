@@ -104,27 +104,34 @@ public class Board {
             takenObject = this.chip.takeObject(steppedTile.takeSteppedObject());
             //Memasukkan object kedalam inventory
             if (takenObject != null) {
-                if (takenObject.getClass().equals(Key.class)) {
-                    Key keyObj = (Key) takenObject;
-                    if (keyObj.getColor().equals(Color.RED)) {
-                        this.inventory[0][0].setObject(takenObject);
-                    } else if (keyObj.getColor().equals(Color.GREEN)) {
-                        this.inventory[1][0].setObject(takenObject);
-                    } else if (keyObj.getColor().equals(Color.BLUE)) {
-                        this.inventory[2][0].setObject(takenObject);
-                    }
-                    else //Yellow Key
-                    {
-                        this.inventory[3][0].setObject(takenObject);
-                    }
-                } else if (takenObject.getClass().equals(Shoes.class)) {
-                    Shoes shoesObj = (Shoes) takenObject;
-                    if (shoesObj.getColor().equals(Color.RED)) {
-                        this.inventory[0][1].setObject(takenObject);
-                    } else if (shoesObj.getColor().equals(Color.BLUE)) {
-                        this.inventory[1][1].setObject(takenObject);
-                    }
-                }
+                this.addToInventory(takenObject);
+            }
+        }
+    }
+
+    /**
+     * Method untuk menambahkan tool yang didapatkan chip ke dalam inventory.
+     * @param tool yang didapatkan
+     */
+    private void addToInventory(TileObject tool) {
+        if (tool.getClass().equals(Key.class)) {
+            Key keyObj = (Key) tool;
+            if (keyObj.getColor().equals(Color.RED)) {
+                this.inventory[0][0].setObject(tool);
+            } else if (keyObj.getColor().equals(Color.GREEN)) {
+                this.inventory[1][0].setObject(tool);
+            } else if (keyObj.getColor().equals(Color.BLUE)) {
+                this.inventory[2][0].setObject(tool);
+            } else //Yellow Key
+            {
+                this.inventory[3][0].setObject(tool);
+            }
+        } else if (tool.getClass().equals(Shoes.class)) {
+            Shoes shoesObj = (Shoes) tool;
+            if (shoesObj.getColor().equals(Color.RED)) {
+                this.inventory[0][1].setObject(tool);
+            } else if (shoesObj.getColor().equals(Color.BLUE)) {
+                this.inventory[1][1].setObject(tool);
             }
         }
     }
@@ -161,32 +168,34 @@ public class Board {
     /**
      * Method untuk menginisialisasi attribute.
      */
-    public void set() {
+    private void set() {
         this.ICRequired = this.level.getICRequired();
         this.chip = new Chip(this.level.getInitialChipCoordinate().x, this.level.getInitialChipCoordinate().y, this.ICRequired);
         this.tiles = this.level.getMap();
         this.clearInventory();
     }
 
+    /**
+     * Method untuk mereset level lalu mengeset kembali ke kondisi awal.
+     */
     public void reset() {
         this.level.resetLevel();
         this.set();
     }
 
     /**
-     * Method untuk mendapatkan index level
+     * Method untuk mendapatkan index level.
      *
      * @return int index level
      */
     public int getIndexLevel() {
         return this.levelIndex;
     }
-    
+
     /**
      * Method untuk mengosongkan inventory.
      */
-    public void clearInventory()
-    {
+    private void clearInventory() {
         for (int i = 0; i < this.inventory.length; i++) {
             for (int j = 0; j < this.inventory[0].length; j++) {
                 this.inventory[i][j].takeSteppedObject();
