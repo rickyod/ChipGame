@@ -38,7 +38,7 @@ public class Board {
      */
     private Levels level;
     /**
-     * Attribute index dari level
+     * Attribute index dari level.
      */
     private int levelIndex;
 
