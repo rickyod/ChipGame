@@ -93,8 +93,8 @@ public class Chip implements Drawable {
      * Method untuk mengecek apakah chip dapat pindah atau tidak.
      *
      * @param object objek yang ingin diinjak
-     * @param moveX perubahan x
-     * @param moveY perubahan y
+     * @param moveX perubahan x (-1 kiri, 0 tetap, 1 kanan)
+     * @param moveY perubahan y (-1 atas, 0 tetap, 1 bawah)
      * @return true jika chip dapat bergerak
      */
     public boolean move(TileObject object, int moveX, int moveY) {
@@ -130,8 +130,8 @@ public class Chip implements Drawable {
                         } else {
                             return false;
                         }
-                    } else { //jika door
-                        if (((Door) object).openDoor(this)) {
+                    } else if (object.getClass().equals(Door.class)) { //jika door
+                        if (((Door) object).check(this)) {
                             this.move(moveX, moveY);
                         } else {
                             return false;
@@ -146,8 +146,8 @@ public class Chip implements Drawable {
     /**
      * Method untuk mengubah arah hadapan chip.
      *
-     * @param moveX
-     * @param moveY
+     * @param moveX perubahan x
+     * @param moveY perubahan y
      */
     private void changeDirection(int moveX, int moveY) {
         if (moveX > 0) {
@@ -285,13 +285,6 @@ public class Chip implements Drawable {
      */
     public int getCondition() {
         return this.win;
-    }
-
-    /**
-     * Method untuk mengembalikan kondisi chip untuk melanjutkan permainan.
-     */
-    public void setDefaultCondition() {
-        this.win = 0;
     }
 
     /**

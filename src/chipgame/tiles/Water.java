@@ -12,9 +12,10 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
- * Air sebagai objek yang dapat ditaruh di ubin yang tidak dapat diambil dan dapat diinjak. 
- * Jika diinjak, player akan mati dan permainan selesai.
- * @author Devi
+ * Air sebagai objek yang dapat ditaruh di ubin yang tidak dapat diambil.
+ * Jika chip tidak memiliki sepatu kebal air dan menginjak air, maka chip akan mati dan permainan selesai.
+ * 
+ * @author Devi Handevi 2013730015
  */
 public class Water extends TileObject implements Conditional {
 
@@ -62,17 +63,6 @@ public class Water extends TileObject implements Conditional {
     }
     
     /**
-     * Method untuk mendapatkan gambar.
-     * @return gambar air
-     */
-    @Override
-    public Image getImage() {
-        Image i = this.image[this.imageIterator];
-        this.imageIterator = (this.imageIterator+1)%8;
-        return i;
-    }
-    
-    /**
      * Method untuk mengecek apakah chip memiliki sepatu khusus untuk dapat berjalan di air
      * @param chip
      * @return true jika chip punya
@@ -84,6 +74,17 @@ public class Water extends TileObject implements Conditional {
         } else {
             return false;
         }
+    }
+    
+    /**
+     * Method untuk mendapatkan gambar.
+     * @return gambar air
+     */
+    @Override
+    public Image getImage() {
+        Image i = this.image[this.imageIterator];
+        this.imageIterator = (this.imageIterator+1)%8;
+        return i;
     }
 }
 

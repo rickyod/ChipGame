@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
  * 
  * @author Devi Handevi 2013730015
  */
-public class Door extends TileObject {
+public class Door extends TileObject implements Conditional {
 
     /**
      * Atribut warna dari door
@@ -66,7 +66,7 @@ public class Door extends TileObject {
     public boolean canBeTaken() {
         return true;
     }
-
+    
     /**
      * Method untuk mengecek apakah chip memiliki kunci dengan warna door yang
      * sama.
@@ -75,7 +75,8 @@ public class Door extends TileObject {
      * @return true, jika key yang dimiliki chip sama atau lebih dari key yang
      * diperlukan
      */
-    public boolean openDoor(Chip chip) {
+    @Override
+    public boolean check(Chip chip) {
         if (chip.hasColoredKey(this.color)) {
             return true;
         }

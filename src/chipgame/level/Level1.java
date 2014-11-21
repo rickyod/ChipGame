@@ -17,10 +17,9 @@ import java.awt.Point;
  */
 public class Level1 extends Level {
 
-    public Level1() {
-        this.initializeLevel();
-    }
-
+    /**
+     * Method untuk menginisialisasi level.
+     */
     @Override
     public void initializeLevel() {
         this.width = 19;
@@ -33,9 +32,12 @@ public class Level1 extends Level {
             }
         }
         this.loadAttributesNeeded();
-        createMap();
+        this.createMap();
     }
     
+    /**
+     * Method untuk men-load attribute-attribute yang diperlukan level.
+     */
     @Override
     protected void loadAttributesNeeded() {
         this.redDoor = new Door(Color.red);
@@ -46,6 +48,9 @@ public class Level1 extends Level {
         this.blueKey = new Key(Color.blue);
     }
 
+    /**
+     * Method untuk membuat peta pada level.
+     */
     @Override
     protected void createMap() {
         //Upper Wall
@@ -115,6 +120,10 @@ public class Level1 extends Level {
         this.tiles[9][17].setObject(this.finish);
         }
 
+    /**
+     * Method untuk mendapatkan koordinat awal chip
+     * @return koordinat awal chip
+     */
     @Override
     public Point getInitialChipCoordinate() {
         return new Point(9, 9);

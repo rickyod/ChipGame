@@ -17,11 +17,10 @@ import java.awt.Point;
  * @author Devi Handevi 2013730015
  */
 public class Level3 extends Level {
-
-    public Level3() {
-        this.initializeLevel();
-    }
-
+    
+    /**
+     * Method untuk menginisialisasi level.
+     */
     @Override
     public void initializeLevel() {
         this.width = 19;
@@ -34,9 +33,12 @@ public class Level3 extends Level {
             }
         }
         this.loadAttributesNeeded();
-        createMap();
+        this.createMap();
     }
     
+    /**
+     * Method untuk men-load attribute-attribute yang diperlukan level.
+     */
     @Override
     protected void loadAttributesNeeded() {
         this.redDoor = new Door(Color.red);
@@ -46,6 +48,9 @@ public class Level3 extends Level {
         this.redShoes = new Shoes(Color.red);
     }
 
+    /**
+     * Method untuk membuat peta pada level.
+     */
     @Override
     protected void createMap() {
         //Water
@@ -131,6 +136,10 @@ public class Level3 extends Level {
         this.tiles[8][13].setObject(this.redShoes);
     }
 
+    /**
+     * Method untuk mendapatkan koordinat awal chip
+     * @return koordinat awal chip
+     */
     @Override
     public Point getInitialChipCoordinate() {
         return new Point(9, 9);

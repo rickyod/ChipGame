@@ -25,14 +25,10 @@ public class Board {
      */
     private Chip chip;
     /**
-     * Attribute inventory tools yang dimiliki chip 
+     * Attribute inventory tools yang dimiliki chip.
      * 0,0 Red Key , 1,0 Green Key, 2,0 Blue Key , 3,0 Yellow Key ,  0,1 Red Shoes , 1,1 Blue Shoes
      */
     private Tile[][] inventory;
-    /**
-     * Attribute untuk menyimpan jumlah IC yang diperlukan.
-     */
-    private int ICRequired;
     /**
      * Attribute level.
      */
@@ -43,7 +39,7 @@ public class Board {
     private int levelIndex;
 
     /**
-     * Constructor untuk men-set papan permainan dan level.
+     * Constructor untuk men-set papan permainan, level, dan inventory.
      */
     public Board() {
         this.inventory = new Tile[4][2];
@@ -122,8 +118,7 @@ public class Board {
                 this.inventory[1][0].setObject(tool);
             } else if (keyObj.getColor().equals(Color.BLUE)) {
                 this.inventory[2][0].setObject(tool);
-            } else //Yellow Key
-            {
+            } else { //Yellow Key
                 this.inventory[3][0].setObject(tool);
             }
         } else if (tool.getClass().equals(Shoes.class)) {
@@ -139,8 +134,7 @@ public class Board {
     /**
      * Method untuk mengecek kondisi permainan.
      *
-     * @return 0 jika permainan belum berakhir, -1 jika permainan kalah, 1 jika
-     * permainan dimenangkan
+     * @return 0 jika permainan belum berakhir, -1 jika permainan kalah, 1 jika permainan dimenangkan
      */
     public int getCondition() {
         return this.chip.getCondition();
@@ -169,8 +163,7 @@ public class Board {
      * Method untuk menginisialisasi attribute.
      */
     private void set() {
-        this.ICRequired = this.level.getICRequired();
-        this.chip = new Chip(this.level.getInitialChipCoordinate().x, this.level.getInitialChipCoordinate().y, this.ICRequired);
+        this.chip = new Chip(this.level.getInitialChipCoordinate().x, this.level.getInitialChipCoordinate().y, this.level.getICRequired());
         this.tiles = this.level.getMap();
         this.clearInventory();
     }

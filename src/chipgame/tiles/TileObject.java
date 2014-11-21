@@ -23,7 +23,7 @@ public abstract class TileObject implements Drawable{
      * @return
      * -1 objek tidak dapat diinjak, 
      * 0 objek dapat langsung diinjak, 
-     * 1 dapat diinjak, tetapi jika terinjak, pengingjak akan mati dan permainan berakhir, 
+     * 1 dapat diinjak, tetapi jika terinjak, harus ada pengecekan terlebih dahulu, pengingjak dapat mati dan permainan berakhir, 
      * 2 dapat diinjak, jika terinjak, penginjak menang dan permainan berakhir, 
      * 3 dapat diinjak, tetapi harus ada pengecekan terlebih dahulu apakah persyaratan penginjak memenuhi atau tidak.
      */

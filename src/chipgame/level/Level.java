@@ -91,36 +91,41 @@ public abstract class Level {
      */
     protected Shoes blueShoes;
     
+    /**
+     * Constructor untuk membuat abstract kelas yang merepresentasikan level.
+     */
     public Level() {
         this.wall = new Wall();
         this.barrier = new Barrier();
         this.IC = new IntegratedCircuit();
         this.finish = new Finish();
+        this.initializeLevel();
     }
     
     /**
-     * Method untuk mendapatkan array of tile , array 2 dimensi dari map.
-     * @return 
+     * Method untuk mendapatkan array of tile, array 2 dimensi dari peta.
+     * @return peta level
      */
     public Tile[][] getMap() {
         return this.tiles;
     }
     
     /**
-     * Method untuk mendapatkan IC yang dibutuhkan pada map.
+     * Method untuk mendapatkan IC yang dibutuhkan pada level.
      * @return int jumlah IC
      */
     public int getICRequired() {
         return this.ICRequired;
     }
-            
+    
     /**
-     * Method untuk mendapatkan koordinat pertama chip.
+     * Method untuk mendapatkan koordinat awal chip
+     * @return koordinat awal chip
      */
     public abstract Point getInitialChipCoordinate();
     
     /**
-     * Method untuk membuat map pada level.
+     * Method untuk membuat peta pada level.
      */
     protected abstract void createMap();
     
@@ -130,7 +135,7 @@ public abstract class Level {
     public abstract void initializeLevel();
     
     /**
-     * Method untuk men-load attribute-attribute yang diperlukan pada level.
+     * Method untuk men-load attribute-attribute yang diperlukan level.
      */
     protected abstract void loadAttributesNeeded();
 }

@@ -12,6 +12,8 @@ import javax.imageio.ImageIO;
 
 /**
  * IC sebagai objek yang dapat di taruh di ubin yang dapat diambil dan dapat diinjak. Menginjak sama dengan mengambil.
+ * IC diperlukan chip untuk melewati barrier.
+ * 
  * @author Devi Handevi 2013730015
  * @author Riky Setiawan
  */

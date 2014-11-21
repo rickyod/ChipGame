@@ -11,7 +11,9 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
- * Ubin Finish sebagai objek yang dapat di taruh di ubin, jika player menginjak ini, maka player akan menang dan permainan berakhir.
+ * Finish adalah objek yang dapat di taruh di ubin.
+ * Jika player menginjak finish, maka player akan menang dan permainan berakhir.
+ * 
  * @author Devi Handevi 2013730015
  */
 public class Finish extends TileObject {

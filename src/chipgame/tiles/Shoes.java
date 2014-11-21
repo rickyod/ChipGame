@@ -13,9 +13,10 @@ import javax.imageio.ImageIO;
 
 /**
  * Shoes sebagai objek yang dapat di taruh di ubin yang dapat diambil dan dapat diinjak. Menginjak sama dengan mengambil.
- * Jika mendapatkan shoes , akan kebal terhadap elemen tergantung dengan warna dari shoes.
- * Jika shoes berwarna merah akan kebal terhadap api.
- * Jika shoes berwarna biru akan kebal terhadap air.
+ * Shoes adalah objek yang dapat memberikan kemampuan khusus pada pemilik, 
+ * yaitu pemilik akan kebal terhadap elemen tergantung dengan warna dari shoes.
+ * Shoes berwarna merah adalah sepatu yang kebal terhadap api.
+ * Shoes berwarna biru adalah sepatu yang kebal terhadap air.
  * 
  * @author Devi Handevi 2013730015
  */

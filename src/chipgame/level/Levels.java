@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 /**
- * Kelas Levels mengatur jalannya level dan memiliki list dari semua level.
+ * Kelas yang memiliki list yang terdiri dari level dan mengatur list tersebut.
  * 
  * @author Riky Setiawan 2013730041
  * @author Devi Handevi 2013730015
@@ -18,29 +18,29 @@ import java.util.ListIterator;
 public class Levels {
     
     /**
-     * Attribute linked list of all stages.
+     * Attribute linked list yang terdiri dari level.
      */
     private LinkedList<Level> listLevel;
     /**
-     * Attribute current level.
+     * Attribute level sekarang.
      */
     private Level currentLevel;
     /**
-     * Attribute list iterator of list level.
+     * Attribute iterator untuk list level.
      */
-    private ListIterator li;
+    private ListIterator listIterator;
     
     /**
      * Constructor untuk menginisialisasi seluruh level.
      */
     public Levels() {
-        this.listLevel = new LinkedList<Level>();
+        this.listLevel = new LinkedList<>();
         this.listLevel.add(new Level1());
         this.listLevel.add(new Level2());
         this.listLevel.add(new Level3());
         this.listLevel.add(new Level4());
-        this.li = this.listLevel.listIterator();
-        this.currentLevel = (Level)this.li.next();
+        this.listIterator = this.listLevel.listIterator();
+        this.currentLevel = (Level)this.listIterator.next();
     }
     
     /**
@@ -72,8 +72,8 @@ public class Levels {
      * @return true jika berhasil
      */
     public boolean goToTheNextLevel() {
-        if(li.hasNext()) {
-            this.currentLevel = (Level)this.li.next();
+        if(listIterator.hasNext()) {
+            this.currentLevel = (Level)this.listIterator.next();
             return true;
         } else {
             return false;

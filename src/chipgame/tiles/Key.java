@@ -13,8 +13,9 @@ import javax.imageio.ImageIO;
 
 /**
  * Key sebagai objek yang dapat di taruh di ubin yang dapat diambil dan dapat diinjak. Menginjak sama dengan mengambil.
- * Jika mendapatkan key , bisa membuka door sesuai dengan warna dari key.
- * Contoh , bila key berwarna merah akan membuka door berwarna merah.
+ * Key dapat membuka door jika keduanya berwarna sama.
+ * Contoh, apabila key berwarna merah, door berwarna merah dapat dibuka.
+ * Satu key dapat membuka semua door yang memiliki warna yang sama.
  * 
  * @author Devi Handevi 2013730015
  */

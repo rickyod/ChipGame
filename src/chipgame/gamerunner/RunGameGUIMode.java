@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 
 /**
  * Kelas yang mempunyai objek board sebagai papan permainan dan mengatur Graphic User Interface(GUI) dari permainan.
+ * 
  * @author Riky Setiawan 2013730041
  * @author Devi Handevi 2013730015
  */
@@ -24,7 +25,7 @@ public class RunGameGUIMode extends JPanel {
     /**
      * Attribute papan permainan.
      */
-    private final Board board = new Board();
+    private final Board board;
     /**
      * Attribute besar ubin.
      */
@@ -34,7 +35,7 @@ public class RunGameGUIMode extends JPanel {
      */
     private static final int WINDOWSIZE_WIDTH = 648;
     /**
-     * Attribute panjang window permainan dengan papan yang tidak utuh.
+     * Attribute tinggi window permainan dengan papan yang tidak utuh.
      */
     private static final int WINDOWSIZE_HEIGHT = 480;
 
@@ -46,11 +47,12 @@ public class RunGameGUIMode extends JPanel {
         setFocusable(true);
         KeyListener listener = new KeyListener();
         addKeyListener(listener);
+        this.board = new Board();
         this.tileSize = 48;
     }
 
     /**
-     * Kelas listener khusus untuk GUI permainan.
+     * Kelas inner khusus untuk listener permainan.
      */
     private class KeyListener extends KeyAdapter {
 
@@ -140,6 +142,10 @@ public class RunGameGUIMode extends JPanel {
         repaint(); //pemanggilan method ini lagi
     }
 
+    /**
+     * Method main untuk menjalankan program.
+     * @param args 
+     */
     public static void main(String[] args) {
         JFrame game = new JFrame();
         game.setTitle("Chip's Challenge");

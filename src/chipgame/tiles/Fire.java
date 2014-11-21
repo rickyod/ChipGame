@@ -13,7 +13,8 @@ import javax.imageio.ImageIO;
 
 /**
  * Api sebagai objek yang dapat ditaruh di ubin yang tidak dapat diambil dan dapat diinjak. 
- * Jika diinjak, player akan mati dan permainan selesai.
+ * Jika player tidak memiliki sepatu kebal api dan menginjak api, maka chip akan mati dan permainan selesai.
+ * 
  * @author Devi Handevi 2013730015
  */
 public class Fire extends TileObject implements Conditional {
@@ -60,17 +61,6 @@ public class Fire extends TileObject implements Conditional {
     }
     
     /**
-     * Method untuk mendapatkan gambar.
-     * @return gambar fire
-     */
-    @Override
-    public Image getImage() {
-        Image i = this.image[this.imageIterator];
-        this.imageIterator = (this.imageIterator+1)%6;
-        return i;
-    }
-
-    /**
      * Method untuk mengecek apakah chip memiliki sepatu khusus untuk dapat berjalan di api
      * @param chip
      * @return true jika chip punya
@@ -83,4 +73,16 @@ public class Fire extends TileObject implements Conditional {
             return false;
         }
     }
+    
+    /**
+     * Method untuk mendapatkan gambar.
+     * @return gambar fire
+     */
+    @Override
+    public Image getImage() {
+        Image i = this.image[this.imageIterator];
+        this.imageIterator = (this.imageIterator+1)%6;
+        return i;
+    }
+
 }
