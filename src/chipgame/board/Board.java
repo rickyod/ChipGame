@@ -143,7 +143,7 @@ public class Board {
     /**
      * Method untuk mendapatkan objek chip
      *
-     * @return
+     * @return chip 
      */
     public Chip getChip() {
         return this.chip;
