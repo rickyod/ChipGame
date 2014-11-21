@@ -77,16 +77,17 @@ public class Chip implements Drawable {
         this.shoes = new Shoes[2];
 
         try {
-            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_down2.png"));
-            this.up = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_up2.png"));
-            this.down = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_down2.png"));
-            this.left = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_left2.png"));
-            this.right = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_right2.png"));
+            this.up = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_up2.PNG"));
+            this.down = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_down2.PNG"));
+            this.left = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_left2.PNG"));
+            this.right = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_right2.PNG"));
             this.burnt = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_burnt.png"));
             this.drown = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_drown.png"));
         } catch (IOException ex) {
             Logger.getLogger(Chip.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        this.image = this.down;
     }
 
     /**
