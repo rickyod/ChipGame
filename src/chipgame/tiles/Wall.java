@@ -5,10 +5,7 @@
 package chipgame.tiles;
 
 import java.awt.Image;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * Tembok sebagai objek yang dapat ditaruh di ubin yang tidak bisa diambil maupun diinjak.
@@ -22,11 +19,8 @@ public class Wall extends TileObject {
      */
     public Wall() {
         this.image = new Image[1];
-        try {
-            this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/wall.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Wall.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        this.image[0] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/wall.png")).getImage();
     }
     
     /**

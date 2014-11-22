@@ -5,10 +5,7 @@
 package chipgame.tiles;
 
 import java.awt.Image;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * Kelas sebagai kotak-kotak ubin untuk board, dapat berisi objek yang dapat diambil atau tidak, diinjak atau tidak.
@@ -37,11 +34,7 @@ public class Tile implements Drawable {
      * Constructor untuk mengisinialisasi gambar awal.
      */
     public Tile() {
-        try {
-            this.image = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/tile.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Tile.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.image = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/tile.png")).getImage();
     }
 
     /**

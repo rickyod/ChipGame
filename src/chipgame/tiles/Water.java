@@ -6,10 +6,7 @@ package chipgame.tiles;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * Air sebagai objek yang dapat ditaruh di ubin yang tidak dapat diambil.
@@ -30,18 +27,15 @@ public class Water extends TileObject implements Conditional {
     public Water() {
         this.image = new Image[8];
         this.imageIterator = 0;
-        try {
-            this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water1.png"));
-            this.image[1] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water2.png"));
-            this.image[2] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water3.png"));
-            this.image[3] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water4.png"));
-            this.image[4] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water5.png"));
-            this.image[5] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water6.png"));
-            this.image[6] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water7.png"));
-            this.image[7] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/water8.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Fire.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        this.image[0] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/water1.png")).getImage();
+        this.image[1] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/water2.png")).getImage();
+        this.image[2] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/water3.png")).getImage();
+        this.image[3] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/water4.png")).getImage();
+        this.image[4] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/water5.png")).getImage();
+        this.image[5] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/water6.png")).getImage();
+        this.image[6] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/water7.png")).getImage();
+        this.image[7] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/water8.png")).getImage();
     }
     
     /**

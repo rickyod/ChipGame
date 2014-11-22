@@ -6,10 +6,7 @@ package chipgame.tiles;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * Kelas Chip sebagai player.
@@ -76,16 +73,12 @@ public class Chip implements Drawable {
         this.coloredKey = new boolean[4];
         this.shoes = new Shoes[2];
 
-        try {
-            this.up = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_up2.PNG"));
-            this.down = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_down2.PNG"));
-            this.left = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_left2.PNG"));
-            this.right = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_right2.PNG"));
-            this.burnt = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_burnt.png"));
-            this.drown = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/chip_drown.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Chip.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.up = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/chip_up2.PNG")).getImage();
+        this.down = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/chip_down2.PNG")).getImage();
+        this.left = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/chip_left2.PNG")).getImage();
+        this.right = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/chip_right2.PNG")).getImage();
+        this.burnt = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/chip_burnt.png")).getImage();
+        this.drown = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/chip_drown.png")).getImage();
         
         this.image = this.down;
     }

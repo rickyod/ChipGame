@@ -5,10 +5,7 @@
 package chipgame.tiles;
 
 import java.awt.Image;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * Finish adalah objek yang dapat di taruh di ubin.
@@ -29,14 +26,11 @@ public class Finish extends TileObject {
     public Finish() {
         this.image = new Image[4];
         this.imageIterator = 0;
-        try {
-            this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/finish1.png"));
-            this.image[1] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/finish2.png"));
-            this.image[2] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/finish3.png"));
-            this.image[3] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/finish4.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Finish.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        this.image[0] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/finish1.png")).getImage();
+        this.image[1] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/finish2.png")).getImage();
+        this.image[2] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/finish3.png")).getImage();
+        this.image[3] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/finish4.png")).getImage();
     }
     
     /**

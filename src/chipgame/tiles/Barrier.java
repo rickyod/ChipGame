@@ -5,10 +5,7 @@
 package chipgame.tiles;
 
 import java.awt.Image;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * Gerbang sebagai objek yang dapat di taruh di ubin yang dapat diambil dan
@@ -23,11 +20,8 @@ public class Barrier extends TileObject implements Conditional {
      */
     public Barrier() {
         this.image = new Image[1];
-        try {
-            this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/barrier.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Barrier.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        this.image[0] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/barrier.png")).getImage();
     }
 
     /**

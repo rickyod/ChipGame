@@ -6,10 +6,7 @@ package chipgame.tiles;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * Api sebagai objek yang dapat ditaruh di ubin yang tidak dapat diambil dan dapat diinjak. 
@@ -30,16 +27,13 @@ public class Fire extends TileObject implements Conditional {
     public Fire() {
         this.image = new Image[6];
         this.imageIterator = 0;
-        try {
-            this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire1.png"));
-            this.image[1] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire2.png"));
-            this.image[2] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire3.png"));
-            this.image[3] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire4.png"));
-            this.image[4] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire5.png"));
-            this.image[5] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/fire6.png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Fire.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        this.image[0] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/fire1.png")).getImage();
+        this.image[1] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/fire2.png")).getImage();
+        this.image[2] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/fire3.png")).getImage();
+        this.image[3] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/fire4.png")).getImage();
+        this.image[4] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/fire5.png")).getImage();
+        this.image[5] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/fire6.png")).getImage();
     }
     
     /**

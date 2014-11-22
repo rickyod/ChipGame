@@ -6,10 +6,7 @@ package chipgame.tiles;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * Shoes sebagai objek yang dapat di taruh di ubin yang dapat diambil dan dapat diinjak. Menginjak sama dengan mengambil.
@@ -34,14 +31,11 @@ public class Shoes extends TileObject {
     public Shoes(Color color) {
         this.image = new Image[1];
         this.color = color;
-        try {
-            if (this.color.equals(Color.RED)) {
-                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/shoes_red.png"));
-            } else if (this.color.equals(Color.BLUE)) {
-                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/shoes_blue.png"));
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Key.class.getName()).log(Level.SEVERE, null, ex);
+        
+        if (this.color.equals(Color.RED)) {
+            this.image[0] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/shoes_red.png")).getImage();
+        } else if (this.color.equals(Color.BLUE)) {
+            this.image[0] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/shoes_blue.png")).getImage();
         }
     }
 

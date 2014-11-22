@@ -6,10 +6,7 @@ package chipgame.tiles;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  * Door sebagai objek yang dapat di taruh di ubin yang dapat diambil dan dapat diinjak dengan kondisi tertentu.
@@ -32,18 +29,15 @@ public class Door extends TileObject implements Conditional {
     public Door(Color color) {
         this.image = new Image[1];
         this.color = color;
-        try {
-            if (color.equals(Color.RED)) {
-                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_red.png"));
-            } else if (color.equals(Color.GREEN)) {
-                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_green.png"));
-            } else if (color.equals(Color.BLUE)) {
-                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_blue.png"));
-            } else if (color.equals(Color.YELLOW)) {
-                this.image[0] = ImageIO.read(getClass().getClassLoader().getResource("chipgame/images/door_yellow.png"));
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Door.class.getName()).log(Level.SEVERE, null, ex);
+        
+        if (color.equals(Color.RED)) {
+            this.image[0] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/door_red.png")).getImage();
+        } else if (color.equals(Color.GREEN)) {
+            this.image[0] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/door_green.png")).getImage();
+        } else if (color.equals(Color.BLUE)) {
+            this.image[0] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/door_blue.png")).getImage();
+        } else if (color.equals(Color.YELLOW)) {
+            this.image[0] = new ImageIcon(getClass().getClassLoader().getResource("chipgame/images/door_yellow.png")).getImage();
         }
     }
 
